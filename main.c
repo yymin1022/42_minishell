@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/02 16:06:52 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/02 16:43:50 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pm_shell.h"
 
-int	main(int argc, char **argv)
+int	main(int argc, char **argv, char **env)
 {
 	printf("Wa Sans %d %s", argc, argv[0]);
 	return (0);
