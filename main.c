@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/02 16:43:50 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/02 17:39:52 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 int	main(int argc, char **argv, char **env)
 {
-	printf("Wa Sans %d %s", argc, argv[0]);
+	char	*input;
+
+	input = readline("");
+	printf("Wa Sans %s %d\n", input, argc);
+	argv = NULL;
+	env = NULL;
+	free(input);
 	return (0);
 }
