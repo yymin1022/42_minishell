@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/02 17:42:56 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/02 17:45:33 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,15 @@ int	main(int argc, char **argv, char **env)
 {
 	char	*input;
 
-	input = readline("pat_mat_shell> :$ ");
-	printf("Wa Sans %s %d\n", input, argc);
+	while (1)
+	{
+		input = readline("pmshell> :$ ");
+		printf("Wa Sans %s\n", input);
+		add_history(input);
+		free(input);
+	}
+	argc = 0;
 	argv = NULL;
 	env = NULL;
-	free(input);
 	return (0);
 }
