@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/02 17:39:52 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/02 17:42:56 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char **argv, char **env)
 {
 	char	*input;
 
-	input = readline("");
+	input = readline("pat_mat_shell> :$ ");
 	printf("Wa Sans %s %d\n", input, argc);
 	argv = NULL;
 	env = NULL;
