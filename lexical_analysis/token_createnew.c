@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
+/*   token_createnew.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/18 11:57:59 by sangylee          #+#    #+#             */
-/*   Updated: 2023/03/19 21:15:41 by sangylee         ###   ########.fr       */
+/*   Created: 2023/03/18 11:21:04 by sangylee          #+#    #+#             */
+/*   Updated: 2024/01/03 15:54:31 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "token_list.h"
 
-t_list	*ft_lstlast(t_list *lst)
+t_list	*token_createnew(void *content)
 {
-	if (!lst)
+	t_list	*node;
+
+	node = (t_list *)malloc(sizeof(t_list));
+	if (!node)
 		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
+	node->content = content;
+	node->next = NULL;
+	return (node);
 }

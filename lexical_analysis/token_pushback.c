@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
+/*   token_pushback.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/18 11:55:26 by sangylee          #+#    #+#             */
-/*   Updated: 2023/03/19 21:15:53 by sangylee         ###   ########.fr       */
+/*   Created: 2023/03/18 12:02:31 by sangylee          #+#    #+#             */
+/*   Updated: 2024/01/03 15:53:57 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "token_list.h"
 
-int	ft_lstsize(t_list *lst)
+void	token_pushback(t_list **lst, t_list *new)
 {
-	int	size;
+	t_list	*node;
 
-	size = 0;
-	while (lst)
+	if (*lst)
 	{
-		lst = lst->next;
-		size++;
+		node = *lst;
+		while (node->next)
+			node = node->next;
+		node->next = new;
 	}
-	return (size);
+	else
+		*lst = new;
 }
