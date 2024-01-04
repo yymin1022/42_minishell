@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/02 17:52:18 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/04 15:07:35 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ int	main(int argc, char **argv, char **env)
 	while (1)
 	{
 		input = readline("pmshell> :$ ");
-		printf("Wa Sans %s\n", input);
 		if (!ft_strcmp(input, "exit"))
 			exit (0);
 		add_history(input);
+		lexical_analysis(input);
 		free(input);
 	}
 	argc = 0;

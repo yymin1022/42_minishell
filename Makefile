@@ -3,7 +3,7 @@ CFLAGS = -Wall -Werror -Wextra
 CLIB = -lreadline
 
 NAME = minishell
-SRCS = main.c
+SRCS = main.c $(wildcard lexical_analysis/*.c)
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
