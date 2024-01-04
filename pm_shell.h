@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/04 14:53:22 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/04 14:59:19 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,6 @@ typedef struct s_list
 	struct s_list	*next;
 }t_list;
 
-t_list		*token_createnew(void *content);
-int			token_listsize(t_list *lst);
-void		token_pushback(t_list **lst, t_list *new);
-void		token_listclear(t_list **lst, void (*del)(void *));
+t_token	*token_createnew(char *token_str, t_token_type token_type);
 
 #endif

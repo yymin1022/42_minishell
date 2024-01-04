@@ -6,20 +6,21 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 11:21:04 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/04 14:43:26 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/04 14:59:05 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pm_shell.h"
 
-t_list	*token_createnew(void *content)
+t_token	*token_createnew(char *token_str, t_token_type token_type)
 {
-	t_list	*node;
+	t_token	*node;
 
-	node = (t_list *)malloc(sizeof(t_list));
+	node = (t_token *)malloc(sizeof(t_token));
 	if (!node)
 		return (NULL);
-	node->content = content;
+	node->str = token_str;
+	node->type = token_type;
 	node->next = NULL;
 	return (node);
 }
