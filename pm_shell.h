@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/04 14:59:19 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/04 15:01:30 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ typedef struct s_list
 }t_list;
 
 t_token	*token_createnew(char *token_str, t_token_type token_type);
+void	token_pushback(t_token **lst, t_token *new);
 
 #endif
