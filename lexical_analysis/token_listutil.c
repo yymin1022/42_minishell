@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:11:54 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/04 15:59:50 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/04 16:34:09 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	token_list_delfront(t_token **token_list)
 		return ;
 	cur = *token_list;
 	node = cur;
+	free(cur->str);
 	cur = cur->next;
 	free(node);
 	*token_list = cur;
