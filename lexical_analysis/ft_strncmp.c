@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token_pushback.c                                   :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/18 12:02:31 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/04 15:05:55 by sangylee         ###   ########.fr       */
+/*   Created: 2023/03/17 12:30:38 by sangylee          #+#    #+#             */
+/*   Updated: 2024/01/04 15:31:01 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pm_shell.h"
 
-void	token_pushback(t_token **lst, t_token *new)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_token	*node;
+	size_t			i;
 
-	if (*lst)
-	{
-		node = *lst;
-		while (node->next)
-			node = node->next;
-		node->next = new;
-	}
-	else
-		*lst = new;
+	if (n == 0)
+		return (0);
+	i = 0;
+	while (i < n && s1[i] && s2[i]
+		&& ((unsigned char)s1[i] == (unsigned char)s2[i]))
+		i++;
+	if (i == n)
+		return (0);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

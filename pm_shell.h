@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/04 15:02:53 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/04 15:33:08 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PM_SHELL_H
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
 # include <readline/history.h>
 # include <readline/readline.h>
 
@@ -56,5 +57,8 @@ t_token	*token_createnew(char *token_str, t_token_type token_type);
 void	token_pushback(t_token **lst, t_token *new);
 
 void	lexical_analysis(char *str);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+size_t	ft_strlen(const char *s);
+void	ft_putstr_fd(char *s, int fd);
 
 #endif

@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token_listsize.c                                   :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/18 11:55:26 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/04 15:07:00 by sangylee         ###   ########.fr       */
+/*   Created: 2023/03/18 10:40:00 by sangylee          #+#    #+#             */
+/*   Updated: 2024/01/04 15:30:52 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pm_shell.h"
 
-int	token_listsize(t_list *lst)
+void	ft_putstr_fd(char *s, int fd)
 {
-	int	size;
-
-	size = 0;
-	while (lst)
-	{
-		lst = lst->next;
-		size++;
-	}
-	return (size);
+	if (!s)
+		return ;
+	write(fd, s, ft_strlen(s));
 }

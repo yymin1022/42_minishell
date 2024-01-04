@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token_listclear.c                                  :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/18 12:19:14 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/04 15:06:15 by sangylee         ###   ########.fr       */
+/*   Created: 2023/03/15 20:25:35 by sangylee          #+#    #+#             */
+/*   Updated: 2024/01/04 15:30:59 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pm_shell.h"
 
-void	token_listclear(t_list **lst, void (*del)(void *))
+size_t	ft_strlen(const char *s)
 {
-	t_list	*node;
-	t_list	*cur;
+	size_t	len;
 
-	if (!del || !lst)
-		return ;
-	cur = *lst;
-	while (cur)
-	{
-		node = cur;
-		del(cur->content);
-		cur = cur->next;
-		free(node);
-	}
-	*lst = NULL;
+	len = 0;
+	while (s[len])
+		len++;
+	return (len);
 }
