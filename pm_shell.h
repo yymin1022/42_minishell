@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/07 07:57:06 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/07 08:08:18 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
 
 //SECTION - main.c
 
-typedef struct s_data
+typedef struct s_info
 {
 	t_list	*env_list;
 	int		is_error;
-}t_data;
+}t_info;
 
 //SECTION - lexical_analysis
 /*NOTE 

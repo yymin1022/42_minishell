@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/04 15:07:35 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/07 08:08:52 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ size_t	ft_strcmp(char *src, char *dst)
 int	main(int argc, char **argv, char **env)
 {
 	char	*input;
+	t_info	info;
 
 	atexit(check_leak);
 	while (1)
