@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/04 21:09:06 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/07 07:33:19 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,14 @@ typedef struct s_list
 
 t_token	*token_createnew(char *token_str, t_token_type token_type);
 void	token_pushback(t_token **lst, t_token *new);
-void	token_list_delfront(t_token **token_list);
 
-void	lexical_analysis(char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t	ft_strlen(const char *s);
 void	ft_putstr_fd(char *s, int fd);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s1);
-int		is_tokenable_sep(char c);
 
+void	lexical_analysis(char *str);
+void	handle_heredoc(t_token *token_list);
+int		is_tokenable_sep(char c);
 #endif
