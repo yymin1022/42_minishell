@@ -6,13 +6,13 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 07:19:18 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/07 07:19:50 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/07 07:33:58 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pm_shell.h"
 
-int	handle_quote(t_token *token_list, char *s, int start)
+static int	handle_quote(t_token *token_list, char *s, int start)
 {
 	int		offset;
 	char	*str;
@@ -28,7 +28,7 @@ int	handle_quote(t_token *token_list, char *s, int start)
 	return (start + offset + 1);
 }
 
-int	handle_limiter(t_token *token_list, char *s, int start)
+static int	handle_limiter(t_token *token_list, char *s, int start)
 {
 	int		offset;
 	char	*str;
@@ -52,7 +52,7 @@ int	handle_limiter(t_token *token_list, char *s, int start)
 	return (start);
 }
 
-void	handle_heredoc_with_limiter(t_token *token_list)
+static void	handle_heredoc_with_limiter(t_token *token_list)
 {
 	int		start_idx;
 	char	*token_str;
