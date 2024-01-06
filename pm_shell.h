@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/07 07:33:19 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/07 07:57:06 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@
 # include <unistd.h>
 # include <readline/history.h>
 # include <readline/readline.h>
+# include "libft/libft.h"
+
+//SECTION - main.c
+
+typedef struct s_data
+{
+	t_list	*env_list;
+	int		is_error;
+}t_data;
 
 //SECTION - lexical_analysis
 /*NOTE 
@@ -47,20 +56,8 @@ typedef struct s_token
 	struct s_token	*next;
 }t_token;
 
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}t_list;
-
 t_token	*token_createnew(char *token_str, t_token_type token_type);
 void	token_pushback(t_token **lst, t_token *new);
-
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-size_t	ft_strlen(const char *s);
-void	ft_putstr_fd(char *s, int fd);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strdup(const char *s1);
 
 void	lexical_analysis(char *str);
 void	handle_heredoc(t_token *token_list);

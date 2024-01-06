@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/15 20:25:35 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/04 15:30:59 by sangylee         ###   ########.fr       */
+/*   Created: 2023/03/15 20:55:08 by sangylee          #+#    #+#             */
+/*   Updated: 2023/03/15 21:51:05 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pm_shell.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *s)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	size_t	len;
+	size_t			i;
 
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
+	i = 0;
+	while (i < len)
+	{
+		*((unsigned char *)b + i) = (unsigned char)c;
+		i++;
+	}
+	return (b);
 }

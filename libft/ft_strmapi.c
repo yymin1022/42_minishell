@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/17 14:05:37 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/04 16:28:35 by sangylee         ###   ########.fr       */
+/*   Created: 2023/03/18 10:26:00 by sangylee          #+#    #+#             */
+/*   Updated: 2023/03/22 16:23:13 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pm_shell.h"
+#include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	s_len;
-	size_t	i;
-	size_t	size;
-	char	*res;
+	unsigned int	i;
+	char			*res;
 
 	if (!s)
 		return (NULL);
-	s_len = ft_strlen(s);
-	if (start >= s_len)
-		size = 0;
-	else if (len >= s_len - start)
-		size = s_len - start;
-	else
-		size = len;
-	res = (char *)malloc(size + 1);
-	i = 0;
+	res = (char *)malloc(ft_strlen(s) + 1);
 	if (!res)
 		return (NULL);
-	while (start < s_len && i < len)
+	i = 0;
+	while (s[i])
 	{
-		res[i] = s[start++];
+		res[i] = f(i, s[i]);
 		i++;
 	}
 	res[i] = '\0';

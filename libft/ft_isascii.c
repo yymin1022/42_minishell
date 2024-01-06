@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/18 10:40:00 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/04 15:30:52 by sangylee         ###   ########.fr       */
+/*   Created: 2023/03/15 19:49:26 by sangylee          #+#    #+#             */
+/*   Updated: 2023/03/22 17:07:03 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pm_shell.h"
+#include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_isascii(int c)
 {
-	if (!s)
-		return ;
-	write(fd, s, ft_strlen(s));
+	if (c >= 0 && c <= 127)
+		return (1);
+	else
+		return (0);
 }

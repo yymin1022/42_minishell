@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 07:19:18 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/07 07:33:58 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/07 07:46:46 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ static int	handle_quote(t_token *token_list, char *s, int start)
 	while (s[start + offset] && s[start + offset] != s[start])
 		offset++;
 	if (s[start + offset] == '\0')
-		str = ft_strdup(s + start);
-	else
-		str = ft_substr(s, start + 1, offset - 1);
+	{
+		ft_putstr_fd("pm_shell: quotes error in heredoc\n", STDERR_FILENO);
+	}
+	str = ft_substr(s, start + 1, offset - 1);
 	token_pushback(&token_list, token_createnew(str, TOKEN_TYPE_ARGV));
 	return (start + offset + 1);
 }

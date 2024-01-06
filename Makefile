@@ -9,16 +9,19 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(CLIB) $(OBJS) -o $(NAME)
+	@$(MAKE) -C libft all
+	$(CC) $(CFLAGS) $(CLIB) $(OBJS) -o $(NAME) -L ./libft -lft
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJS)
+	@$(MAKE) -C libft clean
 
 fclean: clean
 	rm -rf $(NAME)
+	@$(MAKE) -C libft fclean
 
 re: fclean all
 
