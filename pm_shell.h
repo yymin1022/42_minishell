@@ -6,7 +6,7 @@
 /*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/07 22:02:12 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/01/07 23:09:11 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,22 +62,17 @@ typedef struct s_token
 	struct s_token	*next;
 }t_token;
 
-//SECTION - lexical_analysis.c
 void	lexical_analysis(t_info *info, char *s);
-
-//SECTION - handle_heredoc.c
 void	handle_heredoc(t_info *info, t_token *token_list);
 
-//SECTION - token_listutil.c
 int		is_tokenable_sep(char c);
 t_token	*token_createnew(char *token_str, t_token_type token_type);
 t_token	*token_pushback(t_token **lst, t_token *new);
 void	token_listclear(t_token **lst);
 
-//SECTION - env_listutil.c
 t_env	*make_envlist(char **env);
-t_env	*env_createnew(char *key, char *value);
-void	env_pushback(t_env **lst, t_env *new);
+t_env	*env_createnew(char *s);
+void	env_pushback(t_env **lst, t_env *new_node);
 void	env_listclear(t_env **lst);
 
 void	handle_quote(t_info *info, t_token *token_list);

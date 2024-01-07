@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_listutil.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:11:54 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/07 09:32:03 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/07 23:09:05 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,37 +15,31 @@
 t_env	*make_envlist(char **env)
 {
 	int		i;
-	char	*key;
-	char	*value;
-	char	*equal_idx;
 	t_env	*env_list;
 
 	i = -1;
 	env_list = NULL;
 	while (env[++i])
-	{
-		equal_idx = ft_strchr(env[i], '=');
-		key = ft_substr(env[i], 0, equal_idx - env[i]);
-		value = ft_strdup(equal_idx + 1);
-		env_pushback(&env_list, env_createnew(key, value));
-	}
+		env_pushback(&env_list, env_createnew(env[i]));
 	return (env_list);
 }
 
-t_env	*env_createnew(char *key, char *value)
+t_env	*env_createnew(char *s)
 {
 	t_env	*node;
+	char	*equal_idx;
 
 	node = (t_env *)malloc(sizeof(t_env));
 	if (!node)
 		return (NULL);
-	node->key = key;
-	node->value = value;
+	equal_idx = ft_strchr(s, '=');
+	node->key = ft_substr(s, 0, equal_idx - s);
+	node->value = ft_strdup(equal_idx + 1);
 	node->next = NULL;
 	return (node);
 }
 
-void	env_pushback(t_env **lst, t_env *new)
+void	env_pushback(t_env **lst, t_env *new_node)
 {
 	t_env	*node;
 
@@ -54,10 +48,10 @@ void	env_pushback(t_env **lst, t_env *new)
 		node = *lst;
 		while (node->next)
 			node = node->next;
-		node->next = new;
+		node->next = new_node;
 	}
 	else
-		*lst = new;
+		*lst = new_node;
 }
 
 void	env_listclear(t_env **lst)

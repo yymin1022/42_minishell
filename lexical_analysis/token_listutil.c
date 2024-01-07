@@ -6,7 +6,7 @@
 /*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:11:54 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/07 21:58:04 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/01/07 23:09:26 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_token	*token_createnew(char *token_str, t_token_type token_type)
 	return (node);
 }
 
-t_token	*token_pushback(t_token **lst, t_token *new)
+t_token	*token_pushback(t_token **lst, t_token *new_node)
 {
 	t_token	*node;
 
@@ -34,11 +34,11 @@ t_token	*token_pushback(t_token **lst, t_token *new)
 		node = *lst;
 		while (node->next)
 			node = node->next;
-		node->next = new;
+		node->next = new_node;
 	}
 	else
-		*lst = new;
-	return (new);
+		*lst = new_node;
+	return (new_node);
 }
 
 void	token_listclear(t_token **lst)
