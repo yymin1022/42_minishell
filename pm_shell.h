@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/07 10:56:27 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/07 11:03:21 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,6 @@ t_env	*make_envlist(char **env);
 t_env	*env_createnew(char *key, char *value);
 void	env_pushback(t_env **lst, t_env *new);
 void	env_listclear(t_env **lst);
+
+void	handle_quote(t_info *info, t_token *token_list);
 #endif

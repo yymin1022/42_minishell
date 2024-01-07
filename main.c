@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/07 10:54:02 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/07 11:27:23 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	main(int argc, char **argv, char **env)
 	argc = 0;
 	argv = NULL;
 	init_info(&info, env);
-	p_list(info.env_list);
 	while (!info.is_error)
 	{
 		input = readline("pmshell> :$ ");
