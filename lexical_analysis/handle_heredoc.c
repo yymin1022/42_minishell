@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_heredoc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 07:19:18 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/07 11:01:12 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/07 21:42:05 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static int	handle_quote_in_limiter(
 	}
 	str = ft_substr(s, start + 1, offset - 1);
 	token_pushback(&token_list, token_createnew(str, TOKEN_TYPE_ARGV));
+	free(str);
 	return (start + offset + 1);
 }
 
@@ -51,6 +52,7 @@ static int	handle_limiter(
 					offset++;
 			str = ft_substr(s, start, offset);
 			token_pushback(&token_list, token_createnew(str, TOKEN_TYPE_ARGV));
+			free(str);
 			start += offset;
 		}
 	}
@@ -79,6 +81,7 @@ static void	handle_heredoc_with_limiter(t_info *info, t_token *token_list)
 		return (free(token_str));
 	str = ft_substr(token_str, start, ft_strlen(token_str) - start);
 	token_pushback(&token_list, token_createnew(str, TOKEN_TYPE_CHUNK));
+	free(str);
 	free(token_str);
 }
 

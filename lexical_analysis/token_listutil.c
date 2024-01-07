@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_listutil.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:11:54 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/07 09:53:36 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/07 21:39:57 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_token	*token_createnew(char *token_str, t_token_type token_type)
 	node = (t_token *)malloc(sizeof(t_token));
 	if (!node)
 		return (NULL);
-	node->str = token_str;
+	node->str = ft_strdup(token_str);
 	node->type = token_type;
 	node->next = NULL;
 	return (node);

@@ -6,7 +6,7 @@
 /*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/07 20:19:47 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/01/07 21:15:24 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,21 @@ int	main(int argc, char **argv, char **env)
 	(void)argc;
 	(void)argv;
 	init_info(&info, env);
-	while (!info.is_error)
-	{
-		input = readline("pmshell> :$ ");
-		if (!ft_strcmp(input, "exit"))
-			exit (0);
-		add_history(input);
-		lexical_analysis(&info, input);
-		free(input);
-	}
+	// while (!info.is_error)
+	// {
+	// 	input = readline("pmshell> :$ ");
+	// 	if (!ft_strcmp(input, "exit"))
+	// 		exit (0);
+	// 	add_history(input);
+	// 	lexical_analysis(&info, input);
+	// 	free(input);
+	// }
+	input = readline("pmshell> :$ ");
+	if (!ft_strcmp(input, "exit"))
+		exit (0);
+	add_history(input);
+	lexical_analysis(&info, input);
+	free(input);
 	env_listclear(&info.env_list);
 	return (0);
 }
