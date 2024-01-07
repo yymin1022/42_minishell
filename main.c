@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/07 09:35:39 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/07 10:54:02 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	p_list(t_env *list)
 void	init_info(t_info *info, char **env)
 {
 	info->env_list = make_envlist(env);
+	info->is_error = 0;
 }
 
 int	main(int argc, char **argv, char **env)
@@ -52,14 +53,15 @@ int	main(int argc, char **argv, char **env)
 	argv = NULL;
 	init_info(&info, env);
 	p_list(info.env_list);
-	while (1)
+	while (!info.is_error)
 	{
 		input = readline("pmshell> :$ ");
 		if (!ft_strcmp(input, "exit"))
 			exit (0);
 		add_history(input);
-		lexical_analysis(input);
+		lexical_analysis(&info, input);
 		free(input);
 	}
+	env_listclear(&info.env_list);
 	return (0);
 }

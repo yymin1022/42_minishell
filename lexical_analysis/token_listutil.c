@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:11:54 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/07 07:33:09 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/07 09:53:36 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,18 @@ void	token_pushback(t_token **lst, t_token *new)
 		*lst = new;
 }
 
-void	token_listclear(t_list **lst, void (*del)(void *))
+void	token_listclear(t_token **lst)
 {
-	t_list	*node;
-	t_list	*cur;
+	t_token	*node;
+	t_token	*cur;
 
-	if (!del || !lst)
+	if (!lst)
 		return ;
 	cur = *lst;
 	while (cur)
 	{
 		node = cur;
-		del(cur->content);
+		free(cur->str);
 		cur = cur->next;
 		free(node);
 	}
