@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/07 08:08:18 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/07 09:31:54 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,15 @@
 
 //SECTION - main.c
 
+typedef struct s_env{
+	char			*key;
+	char			*value;
+	struct s_env	*next;
+}t_env;
+
 typedef struct s_info
 {
-	t_list	*env_list;
+	t_env	*env_list;
 	int		is_error;
 }t_info;
 
@@ -62,4 +68,9 @@ void	token_pushback(t_token **lst, t_token *new);
 void	lexical_analysis(char *str);
 void	handle_heredoc(t_token *token_list);
 int		is_tokenable_sep(char c);
+
+t_env	*make_envlist(char **env);
+t_env	*env_createnew(char *key, char *value);
+void	env_pushback(t_env **lst, t_env *new);
+void	env_listclear(t_env **lst);
 #endif
