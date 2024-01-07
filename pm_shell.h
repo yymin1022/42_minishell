@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pm_shell.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/07 11:03:21 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/07 21:55:01 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	handle_heredoc(t_info *info, t_token *token_list);
 //SECTION - token_listutil.c
 int		is_tokenable_sep(char c);
 t_token	*token_createnew(char *token_str, t_token_type token_type);
-void	token_pushback(t_token **lst, t_token *new);
+t_token	*token_pushback(t_token **lst, t_token *new);
 void	token_listclear(t_token **lst);
 
 //SECTION - env_listutil.c

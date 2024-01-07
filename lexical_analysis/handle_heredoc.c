@@ -6,7 +6,7 @@
 /*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 07:19:18 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/07 21:42:05 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/01/07 21:44:13 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	handle_limiter(
 			while (s[start + offset] && !is_tokenable_sep(s[start + offset])
 				&& s[start + offset] != '\''
 				&& s[start + offset] != '\"')
-					offset++;
+				offset++;
 			str = ft_substr(s, start, offset);
 			token_pushback(&token_list, token_createnew(str, TOKEN_TYPE_ARGV));
 			free(str);

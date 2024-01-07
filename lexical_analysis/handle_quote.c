@@ -6,7 +6,7 @@
 /*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 11:02:31 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/07 21:40:26 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/01/07 21:53:55 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ char	**handle_quote_in_chunk(t_info *info, char *s)
 void	handle_quote(t_info *info, t_token *token_list)
 {
 	char	**strs;
-	// t_token	*cur;
+	t_token	*tmp;
 
 	while (token_list)
 	{
@@ -97,12 +97,15 @@ void	handle_quote(t_info *info, t_token *token_list)
 			strs = handle_quote_in_chunk(info, token_list->str);
 			if (strs)
 			{
+				tmp = token_list->next;
+				token_list->next = NULL;
 				free(token_list->str);
 				token_list->str = ft_strdup(strs[0]);
 				token_pushback(&token_list,
 					token_createnew(strs[1], TOKEN_TYPE_ARGV));
-				token_pushback(&token_list,
-					token_createnew(strs[2], TOKEN_TYPE_CHUNK));
+				token_list = token_pushback(&token_list,
+						token_createnew(strs[2], TOKEN_TYPE_CHUNK));
+				token_list->next = tmp;
 			}
 		}
 		token_list = token_list->next;
