@@ -6,7 +6,7 @@
 /*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/07 21:55:01 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/01/07 22:02:12 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,8 @@ void	env_pushback(t_env **lst, t_env *new);
 void	env_listclear(t_env **lst);
 
 void	handle_quote(t_info *info, t_token *token_list);
+
+size_t	ft_strcmp(char *src, char *dst);
+void	p_list(t_env *list);
+void	free_2d_str_array(char **arr);
 #endif

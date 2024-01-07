@@ -6,7 +6,7 @@
 /*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 11:02:31 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/07 21:53:55 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/01/07 22:33:09 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ char	*handle_double_quote_with_env(t_info *info, char *s)
 	res = ft_strjoin(dollor_front, dollor_back);
 	free(dollor_front);
 	free(dollor_back);
+	free(s);
 	return (res);
 }
 
@@ -71,8 +72,13 @@ char	**handle_quote_in_chunk(t_info *info, char *s)
 	char	**strs;
 
 	strs = (char **)malloc(sizeof(char *) * 4);
-	if (set_quote_index(info, s, &start_idx, &end_idx) || !strs)
+	if (!strs)
 		return (NULL);
+	if (set_quote_index(info, s, &start_idx, &end_idx))
+	{
+		free_2d_str_array(strs);
+		return (NULL);
+	}
 	if (start_idx > 0 && s[start_idx - 1] == '$')
 		strs[0] = ft_substr(s, 0, start_idx - 1);
 	else
@@ -106,6 +112,7 @@ void	handle_quote(t_info *info, t_token *token_list)
 				token_list = token_pushback(&token_list,
 						token_createnew(strs[2], TOKEN_TYPE_CHUNK));
 				token_list->next = tmp;
+				free_2d_str_array(strs);
 			}
 		}
 		token_list = token_list->next;

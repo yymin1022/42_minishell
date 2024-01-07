@@ -1,35 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexical_analysis.c                                 :+:      :+:    :+:   */
+/*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/04 14:44:59 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/07 22:04:26 by isang-yun        ###   ########.fr       */
+/*   Created: 2024/01/07 21:58:39 by isang-yun         #+#    #+#             */
+/*   Updated: 2024/01/07 22:31:26 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pm_shell.h"
+#include "pm_shell.h"
 
-void	print_list(t_token *token_list)
+size_t	ft_strcmp(char *src, char *dst)
 {
-	while (token_list)
+	size_t	i;
+
+	i = 0;
+	while (src[i] && dst[i] && src[i] == dst[i])
+		i++;
+	return (src[i] - dst[i]);
+}
+
+void	p_list(t_env *list)
+{
+	while (list)
 	{
-		printf("%s\n", token_list->str);
-		token_list = token_list->next;
+		printf("%s %s\n", list->key, list->value);
+		list = list->next;
 	}
 	printf("-----------------\n");
 }
 
-void	lexical_analysis(t_info *info, char *s)
+void	free_2d_str_array(char **arr)
 {
-	t_token	*token_list;
+	int	i;
 
-	token_list = token_createnew(s, TOKEN_TYPE_CHUNK);
-	handle_heredoc(info, token_list);
-	print_list(token_list);
-	handle_quote(info, token_list);
-	print_list(token_list);
-	token_listclear(&token_list);
+	i = -1;
+	if (!arr)
+		return ;
+	while (arr[++i])
+		free(arr[i]);
+	free(arr);
 }
