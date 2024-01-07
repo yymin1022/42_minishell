@@ -6,76 +6,78 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 07:19:18 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/07 10:46:47 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/07 11:01:12 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pm_shell.h"
 
-static int	handle_quote(t_info *info, t_token *token_list, char *s, int idx)
+static int	handle_quote_in_limiter(
+	t_info *info, t_token *token_list, char *s, int start)
 {
 	int		offset;
 	char	*str;
 
 	offset = 1;
-	while (s[idx + offset] && s[idx + offset] != s[idx])
+	while (s[start + offset] && s[start + offset] != s[start])
 		offset++;
-	if (s[idx + offset] == '\0')
+	if (s[start + offset] == '\0')
 	{
 		ft_putstr_fd("pm_shell: quotes error in heredoc\n", STDERR_FILENO);
 		info->is_error = 1;
-		return (idx + offset + 1);
+		return (start + offset + 1);
 	}
-	str = ft_substr(s, idx + 1, offset - 1);
+	str = ft_substr(s, start + 1, offset - 1);
 	token_pushback(&token_list, token_createnew(str, TOKEN_TYPE_ARGV));
-	return (idx + offset + 1);
+	return (start + offset + 1);
 }
 
-static int	handle_limiter(t_info *info, t_token *token_list, char *s, int idx)
+static int	handle_limiter(
+	t_info *info, t_token *token_list, char *s, int start)
 {
 	int		offset;
 	char	*str;
 
-	while (s[idx] && !is_tokenable_sep(s[idx]))
+	while (s[start] && !is_tokenable_sep(s[start]))
 	{
-		if (s[idx] == '\'' || s[idx] == '\"')
-			idx = handle_quote(info, token_list, s, idx);
+		if (s[start] == '\'' || s[start] == '\"')
+			start = handle_quote_in_limiter(info, token_list, s, start);
 		else
 		{
 			offset = 1;
-			while (s[idx + offset] && !is_tokenable_sep(s[idx + offset])
-				&& s[idx + offset] != '\''
-				&& s[idx + offset] != '\"')
+			while (s[start + offset] && !is_tokenable_sep(s[start + offset])
+				&& s[start + offset] != '\''
+				&& s[start + offset] != '\"')
 					offset++;
-			str = ft_substr(s, idx, offset);
+			str = ft_substr(s, start, offset);
 			token_pushback(&token_list, token_createnew(str, TOKEN_TYPE_ARGV));
-			idx += offset;
+			start += offset;
 		}
 	}
-	return (idx);
+	return (start);
 }
 
 static void	handle_heredoc_with_limiter(t_info *info, t_token *token_list)
 {
-	int		start_idx;
+	int		start;
 	char	*token_str;
 	char	*str;
 
 	token_str = ft_strdup(token_list->str);
-	start_idx = 0;
-	while (token_str[start_idx] && ft_strncmp(token_str + start_idx, "<<", 2))
-		start_idx++;
-	if (token_str[start_idx] == '\0')
+	start = 0;
+	while (token_str[start] && ft_strncmp(token_str + start, "<<", 2))
+		start++;
+	if (token_str[start] == '\0')
 		return (free(token_str));
-	start_idx += 2;
+	start += 2;
 	free(token_list->str);
-	token_list->str = ft_substr(token_str, 0, start_idx);
-	while (token_str[start_idx] && token_str[start_idx] == ' ')
-		start_idx++;
-	start_idx = handle_limiter(info, token_list, token_str, start_idx);
-	if (ft_strlen(token_str) - start_idx == 0)
+	token_list->str = ft_substr(token_str, 0, start);
+	while (token_str[start] && token_str[start] == ' ')
+		start++;
+	start = handle_limiter(info, token_list, token_str, start);
+	if (ft_strlen(token_str) - start == 0)
 		return (free(token_str));
-	str = ft_substr(token_str, start_idx, ft_strlen(token_str) - start_idx);
+	str = ft_substr(token_str, start, ft_strlen(token_str) - start);
 	token_pushback(&token_list, token_createnew(str, TOKEN_TYPE_CHUNK));
 	free(token_str);
 }
