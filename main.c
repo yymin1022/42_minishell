@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/07 11:27:23 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/07 20:19:47 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int	main(int argc, char **argv, char **env)
 	t_info	info;
 
 	atexit(check_leak);
-	argc = 0;
-	argv = NULL;
+	(void)argc;
+	(void)argv;
 	init_info(&info, env);
 	while (!info.is_error)
 	{
