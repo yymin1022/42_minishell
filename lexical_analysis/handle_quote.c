@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 11:02:31 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/08 14:46:41 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/08 16:05:40 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	**handle_quote_in_chunk(t_info *info, char *s)
 		return (NULL);
 	if (set_quote_index(info, s, &start_idx, &end_idx))
 	{
-		free_2d_str_array(strs);
+		free(strs);
 		return (NULL);
 	}
 	if (start_idx > 0 && s[start_idx - 1] == '$')
