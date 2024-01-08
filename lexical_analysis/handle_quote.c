@@ -6,11 +6,13 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 11:02:31 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/08 16:05:40 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/08 16:31:25 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pm_shell.h"
+
+extern int	g_status_code;
 
 int	set_quote_index(t_info *info, char *s, int *start_idx, int *end_idx)
 {
@@ -50,6 +52,26 @@ char	*find_value_in_env(t_info *info, char *s)
 	return (ft_strdup(""));
 }
 
+char	*handle_q_mark_with_dollor(char *s, int dollor_idx)
+{
+	char	*status_str;
+	char	*dollor_back;
+	char	*res;
+
+	status_str = ft_itoa(g_status_code);
+	if (s[dollor_idx + 2] == '\0')
+		res = ft_strdup(status_str);
+	else
+	{
+		dollor_back = ft_substr(s, dollor_idx + 2,
+				ft_strlen(s) - dollor_idx - 2);
+		res = ft_strjoin(status_str, dollor_back);
+		free(dollor_back);
+	}
+	free(status_str);
+	return (res);
+}
+
 char	*handle_double_quote_with_env(t_info *info, char *s)
 {
 	int		dollor_idx;
@@ -59,8 +81,11 @@ char	*handle_double_quote_with_env(t_info *info, char *s)
 
 	dollor_idx = ft_strchr(s, '$') - s;
 	dollor_front = ft_substr(s, 0, dollor_idx);
-	dollor_back = find_value_in_env(info,
-			ft_substr(s, dollor_idx + 1, ft_strlen(s) - dollor_idx));
+	if (s[dollor_idx + 1] == '?')
+		dollor_back = handle_q_mark_with_dollor(s, dollor_idx);
+	else
+		dollor_back = find_value_in_env(info,
+				ft_substr(s, dollor_idx + 1, ft_strlen(s) - dollor_idx));
 	res = ft_strjoin(dollor_front, dollor_back);
 	free(dollor_front);
 	free(dollor_back);
