@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/20 17:07:44 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/20 21:44:44 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_info
 }t_info;
 
 //SECTION - lexical_analysis
-/*NOTE 
+/*NOTE
 	TOKEN_TYPE_CHUNK,// 해석될 여지가 아직 존재하는 단계
 	TOKEN_TYPE_ARGV,// 더이상 해석할 수 없는 단계
 	TOKEN_TYPE_SPACE,// 빈칸
@@ -51,7 +51,7 @@ typedef enum e_token_type
 	TOKEN_TYPE_REDIRECTION
 }t_token_type;
 
-/*NOTE  
+/*NOTE
 	type: 해당 토큰의 타입
 	str: 해당 토큰의 문자열
 	next: 다음 토큰을 가리킴
