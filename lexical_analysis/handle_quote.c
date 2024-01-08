@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_quote.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
+/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 11:02:31 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/07 22:54:06 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/01/08 14:46:41 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,18 @@ int	set_quote_index(t_info *info, char *s, int *start_idx, int *end_idx)
 
 char	*find_value_in_env(t_info *info, char *s)
 {
-	while (info->env_list)
+	t_env	*cur;
+
+	cur = info->env_list;
+	while (cur)
 	{
-		if (!ft_strncmp(info->env_list->key, s, ft_strlen(s))
-			&& ft_strlen(info->env_list->key) == ft_strlen(s))
+		if (!ft_strncmp(cur->key, s, ft_strlen(s))
+			&& ft_strlen(cur->key) == ft_strlen(s))
 		{
 			free(s);
-			return (ft_strdup(info->env_list->value));
+			return (ft_strdup(cur->value));
 		}
-		info->env_list = info->env_list->next;
+		cur = cur->next;
 	}
 	free(s);
 	return (ft_strdup(""));
