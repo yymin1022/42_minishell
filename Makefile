@@ -3,7 +3,8 @@ CFLAGS = -Wall -Werror -Wextra
 CLIB = -lreadline
 
 NAME = minishell
-SRCS = main.c
+SRCS = main.c \
+		sig_handle/sig_handle.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
