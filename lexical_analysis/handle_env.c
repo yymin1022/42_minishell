@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 22:45:26 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/11 00:02:28 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/11 01:57:19 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ char	**find_value_in_env_without_quote(
 	strs = (char **)malloc(sizeof(char *) * 4);
 	if (!strs)
 		return (0);
-	env_value = find_value_in_env(info,
-			ft_substr(s, dollor_idx + 1, next_idx - dollor_idx - 1));
+	env_value = ft_substr(s, dollor_idx + 1, next_idx - dollor_idx - 1);
+	env_value = find_value_in_env(info, env_value);
 	space_idx = 0;
 	while (env_value[space_idx] && env_value[space_idx] != ' ')
 		space_idx++;
@@ -72,9 +72,9 @@ char	**handle_env_without_quote(t_info *info, char *s)
 	strs[1] = ft_strdup(tmps[0]);
 	strs[2] = ft_strdup(tmps[1]);
 	strs[3] = ft_strdup(tmps[2]);
-	free_2d_str_array(tmps);
 	strs[4] = ft_substr(s, next_idx, ft_strlen(s) - next_idx);
 	strs[5] = 0;
+	free_2d_str_array(tmps);
 	return (strs);
 }
 
@@ -93,8 +93,10 @@ void	make_token_in_env(t_token *token_list, char **strs)
 		token_pushback(&token_list, token_createnew(strs[2], TOKEN_TYPE_SPACE));
 		token_pushback(&token_list, token_createnew(strs[3], TOKEN_TYPE_ARGV));
 	}
-	token_pushback(&token_list, token_createnew(strs[4], TOKEN_TYPE_CHUNK));
+	token_list = token_pushback(&token_list,
+			token_createnew(strs[4], TOKEN_TYPE_CHUNK));
 	free_2d_str_array(strs);
+	token_list->next = tmp;
 }
 
 void	handle_env(t_info *info, t_token *token_list)
