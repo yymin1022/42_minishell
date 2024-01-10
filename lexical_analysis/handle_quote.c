@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_quote.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 11:02:31 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/08 16:31:25 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/10 10:44:33 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,45 +52,59 @@ char	*find_value_in_env(t_info *info, char *s)
 	return (ft_strdup(""));
 }
 
-char	*handle_q_mark_with_dollor(char *s, int dollor_idx)
+int	set_dollor_idx(char *s, int *dollor_idx, int *next_idx)
 {
-	char	*status_str;
-	char	*dollor_back;
-	char	*res;
-
-	status_str = ft_itoa(g_status_code);
-	if (s[dollor_idx + 2] == '\0')
-		res = ft_strdup(status_str);
-	else
+	(*dollor_idx) = 0;
+	while (s[*dollor_idx] && s[*dollor_idx] != '$')
+		(*dollor_idx)++;
+	if (s[*dollor_idx] == '\0')
+		return (0);
+	(*next_idx) = (*dollor_idx) + 1;
+	if (s[*next_idx] == '?' || ft_isdigit(s[*next_idx])
+		|| (!ft_isalpha(s[*next_idx]) && s[*next_idx] != '_'))
 	{
-		dollor_back = ft_substr(s, dollor_idx + 2,
-				ft_strlen(s) - dollor_idx - 2);
-		res = ft_strjoin(status_str, dollor_back);
-		free(dollor_back);
+		(*next_idx)++;
+		return (1);
 	}
-	free(status_str);
-	return (res);
+	if (s[*next_idx] == '\0'
+		|| (!ft_isalnum(s[*next_idx]) && s[*next_idx] != '_'))
+		return (0);
+	while (s[*next_idx]
+		&& (ft_isalnum(s[*next_idx]) || s[*next_idx] == '_'))
+		(*next_idx)++;
+	return (1);
 }
 
 char	*handle_double_quote_with_env(t_info *info, char *s)
 {
+	char	*strs[3];
 	int		dollor_idx;
-	char	*dollor_front;
-	char	*dollor_back;
-	char	*res;
+	int		next_idx;
+	char	*tmp;
 
-	dollor_idx = ft_strchr(s, '$') - s;
-	dollor_front = ft_substr(s, 0, dollor_idx);
-	if (s[dollor_idx + 1] == '?')
-		dollor_back = handle_q_mark_with_dollor(s, dollor_idx);
-	else
-		dollor_back = find_value_in_env(info,
-				ft_substr(s, dollor_idx + 1, ft_strlen(s) - dollor_idx));
-	res = ft_strjoin(dollor_front, dollor_back);
-	free(dollor_front);
-	free(dollor_back);
-	free(s);
-	return (res);
+	while (set_dollor_idx(s, &dollor_idx, &next_idx))
+	{
+		strs[0] = ft_substr(s, 0, dollor_idx);
+		if (s[dollor_idx + 1] == '?')
+		{
+			next_idx = dollor_idx + 2;
+			strs[1] = ft_itoa(g_status_code);
+		}
+		else
+		{
+			strs[1] = ft_substr(s, dollor_idx + 1, next_idx - dollor_idx - 1);
+			strs[1] = find_value_in_env(info, strs[1]);
+		}
+		strs[2] = ft_substr(s, next_idx, ft_strlen(s) - next_idx);
+		tmp = ft_strjoin(strs[0], strs[1]);
+		free(s);
+		s = ft_strjoin(tmp, strs[2]);
+		free(tmp);
+		free(strs[0]);
+		free(strs[1]);
+		free(strs[2]);
+	}
+	return (s);
 }
 
 char	**handle_quote_in_chunk(t_info *info, char *s)
