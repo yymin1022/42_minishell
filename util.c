@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
+/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 21:58:39 by isang-yun         #+#    #+#             */
-/*   Updated: 2024/01/07 22:31:26 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/01/10 17:59:42 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,16 @@ void	free_2d_str_array(char **arr)
 	while (arr[++i])
 		free(arr[i]);
 	free(arr);
+}
+
+void	four_times_free(char *s1, char *s2, char *s3, char *s4)
+{
+	if (s1)
+		free(s1);
+	if (s2)
+		free(s2);
+	if (s3)
+		free(s3);
+	if (s4)
+		free(s4);
 }

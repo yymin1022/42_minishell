@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pm_shell.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
+/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/07 23:09:11 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/01/10 22:13:25 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,10 @@ void	env_pushback(t_env **lst, t_env *new_node);
 void	env_listclear(t_env **lst);
 
 void	handle_quote(t_info *info, t_token *token_list);
+char	*handle_double_quote_with_env(t_info *info, char *s);
 
 size_t	ft_strcmp(char *src, char *dst);
 void	p_list(t_env *list);
 void	free_2d_str_array(char **arr);
+void	four_times_free(char *s1, char *s2, char *s3, char *s4);
 #endif
