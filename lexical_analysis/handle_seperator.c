@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 00:44:16 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/11 02:16:40 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/11 02:24:47 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,35 @@ char	**handle_seperator_with_strs(char *s, char *sep)
 	return (strs);
 }
 
+void	make_token_in_seperator(t_token *token_list, char *sep, char **strs)
+{
+	t_token	*tmp;
+
+	tmp = token_list->next;
+	token_list->next = 0;
+	free(token_list->str);
+	token_list->str = ft_strdup(strs[0]);
+	if (sep[0] == ' ')
+		token_pushback(&token_list, token_createnew(strs[1], TOKEN_TYPE_SPACE));
+	else if (sep[0] == '|')
+	{
+		token_pushback(&token_list,
+			token_createnew(strs[1], TOKEN_TYPE_PIPELINE));
+	}
+	else
+	{
+		token_pushback(&token_list,
+			token_createnew(strs[1], TOKEN_TYPE_REDIRECTION));
+	}
+	token_list = token_pushback(&token_list,
+			token_createnew(strs[2], TOKEN_TYPE_CHUNK));
+	free_2d_str_array(strs);
+	token_list->next = tmp;
+}
+
 void	handle_seperator(t_token *token_list, char *sep)
 {
 	char	**strs;
-	t_token	*tmp;
 
 	while (token_list)
 	{
@@ -54,19 +79,7 @@ void	handle_seperator(t_token *token_list, char *sep)
 			strs = handle_seperator_with_strs(token_list->str, sep);
 			if (strs)
 			{
-				tmp = token_list->next;
-				token_list->next = 0;
-				free(token_list->str);
-				token_list->str = ft_strdup(strs[0]);
-				if (sep[0] == ' ')
-					token_pushback(&token_list, token_createnew(strs[1], TOKEN_TYPE_SPACE));
-				else if (sep[0] == '|')
-					token_pushback(&token_list, token_createnew(strs[1], TOKEN_TYPE_PIPELINE));
-				else
-					token_pushback(&token_list, token_createnew(strs[1], TOKEN_TYPE_REDIRECTION));
-				token_list = token_pushback(&token_list, token_createnew(strs[2], TOKEN_TYPE_CHUNK));
-				free_2d_str_array(strs);
-				token_list->next = tmp;
+				make_token_in_seperator(token_list, sep, strs);
 				continue ;
 			}
 		}
