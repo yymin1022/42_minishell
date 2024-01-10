@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/10 22:13:25 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/11 00:00:42 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,10 @@ void	env_listclear(t_env **lst);
 
 void	handle_quote(t_info *info, t_token *token_list);
 char	*handle_double_quote_with_env(t_info *info, char *s);
+int		set_dollor_idx(char *s, int *dollor_idx, int *next_idx);
+char	*find_value_in_env(t_info *info, char *s);
+
+void	handle_env(t_info *info, t_token *token_list);
 
 size_t	ft_strcmp(char *src, char *dst);
 void	p_list(t_env *list);

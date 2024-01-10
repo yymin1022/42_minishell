@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:08:01 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/10 22:14:13 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/10 23:16:01 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 extern int	g_status_code;
 
-static char	*find_value_in_env(t_info *info, char *s)
+char	*find_value_in_env(t_info *info, char *s)
 {
 	t_env	*cur;
 
@@ -33,7 +33,7 @@ static char	*find_value_in_env(t_info *info, char *s)
 	return (ft_strdup(""));
 }
 
-static int	set_dollor_idx(char *s, int *dollor_idx, int *next_idx)
+int	set_dollor_idx(char *s, int *dollor_idx, int *next_idx)
 {
 	if (ft_strlen(s) == 1 && !ft_strncmp(s, "$", 1))
 		return (0);
