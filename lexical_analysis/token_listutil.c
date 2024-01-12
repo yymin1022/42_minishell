@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_listutil.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
+/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:11:54 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/07 23:09:26 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/01/12 16:07:03 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,30 @@ void	token_listclear(t_token **lst)
 	*lst = NULL;
 }
 
-void	token_list_delfront(t_token **token_list)
+t_token	*token_delete(t_token **lst, t_token *token)
 {
-	t_token	*node;
 	t_token	*cur;
+	t_token	*prev;
 
-	if (!token_list)
-		return ;
-	cur = *token_list;
-	node = cur;
-	free(cur->str);
+	if (!lst)
+		return (0);
+	cur = *lst;
+	prev = cur;
+	if (cur == token)
+	{
+		cur = cur->next;
+		free(prev->str);
+		free(prev);
+		return (cur);
+	}
+	while (cur && cur->next != token)
+		cur = cur->next;
+	prev = cur;
 	cur = cur->next;
-	free(node);
-	*token_list = cur;
+	prev->next = cur->next;
+	free(cur->str);
+	free(cur);
+	return (prev);
 }
 
 int	is_tokenable_sep(char c)

@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/11 01:38:01 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/12 16:05:30 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int		is_tokenable_sep(char c);
 t_token	*token_createnew(char *token_str, t_token_type token_type);
 t_token	*token_pushback(t_token **lst, t_token *new);
 void	token_listclear(t_token **lst);
+t_token	*token_delete(t_token **lst, t_token *token);
 
 t_env	*make_envlist(char **env);
 t_env	*env_createnew(char *s);
