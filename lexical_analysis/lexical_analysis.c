@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 14:44:59 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/12 16:49:56 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/12 17:01:24 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void	handle_arg(t_token *token_list)
 	head = token_list;
 	if (head->next == 0)
 		return ;
-	while (token_list->next)
+	while (token_list)
 	{
-		next = head->next;
-		if (token_list->type == TOKEN_TYPE_ARGV
+		next = token_list->next;
+		if (next && token_list->type == TOKEN_TYPE_ARGV
 			&& next->type == TOKEN_TYPE_ARGV)
 		{
 			res = ft_strjoin(token_list->str, next->str);
@@ -56,7 +56,8 @@ void	handle_arg(t_token *token_list)
 			token_list->next = next->next;
 			free(next);
 		}
-		token_list = token_list->next;
+		else
+			token_list = token_list->next;
 	}
 }
 
@@ -90,17 +91,11 @@ void	lexical_analysis(t_info *info, char *s)
 	handle_env(info, token_list);
 	print_list(token_list);
 	handle_seperator(token_list, " ");
-	print_list(token_list);
 	handle_seperator(token_list, "|");
-	print_list(token_list);
 	handle_seperator(token_list, "<<");
-	print_list(token_list);
 	handle_seperator(token_list, ">>");
-	print_list(token_list);
 	handle_seperator(token_list, "<");
-	print_list(token_list);
 	handle_seperator(token_list, ">");
-	print_list(token_list);
 	handle_chunk(token_list);
 	print_list(token_list);
 	handle_arg(token_list);

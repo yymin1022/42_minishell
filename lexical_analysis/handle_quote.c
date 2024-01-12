@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 11:02:31 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/10 18:19:55 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/12 17:11:49 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,11 @@ void	handle_quote(t_info *info, t_token *token_list)
 						token_createnew(strs[2], TOKEN_TYPE_CHUNK));
 				token_list->next = tmp;
 				free_2d_str_array(strs);
+				continue ;
 			}
 		}
 		token_list = token_list->next;
 	}
 }
+
+//cat << $"USER" -e > a | echo "$USER"$USER"$USER"$USER
