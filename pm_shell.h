@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/12 20:38:05 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/12 21:16:38 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,26 @@ void	p_list(t_env *list);
 void	free_2d_str_array(char **arr);
 void	four_times_free(char *s1, char *s2, char *s3, char *s4);
 
+//!SECTION syntax_analysis
 int		syntax_analysis(t_token *token_list);
+
+//!SECTION make cmd list
+typedef struct s_redirect
+{
+	char					*type;
+	char					*file;
+	struct s_redirect		*next;
+}	t_redirect;
+
+typedef struct s_cmd
+{
+	char			**argv;
+	t_redirect		*redirect;
+	int				pipe[2];
+	struct s_cmd	*prev;
+	struct s_cmd	*next;
+}	t_cmd;
+
+t_cmd	*make_cmdlist(t_token *token_list);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/12 21:05:36 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/12 21:15:05 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	main(int argc, char **argv, char **env)
 	char	*input;
 	t_info	info;
 	t_token	*token_list;
+	t_cmd	*cmd_list;
 
 	atexit(check_leak);
 	(void)argc;
@@ -51,7 +52,6 @@ int	main(int argc, char **argv, char **env)
 	add_history(input);
 	token_list = lexical_analysis(&info, input);
 	free(input);
-	print_list(token_list);
 	if (!syntax_analysis(token_list))
 	{
 		info.is_error = 1;
@@ -60,6 +60,8 @@ int	main(int argc, char **argv, char **env)
 		env_listclear(&(info.env_list));
 		return (0);
 	}
+	print_list(token_list);
+	cmd_list = make_cmdlist(token_list);
 	token_listclear(&token_list);
 	env_listclear(&(info.env_list));
 	return (0);
