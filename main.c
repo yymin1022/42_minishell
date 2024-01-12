@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/12 20:40:04 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/12 21:05:36 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(int argc, char **argv, char **env)
 	(void)argv;
 	init_info(&info, env);
 	input = readline("pmshell> :$ ");
-	if (!ft_strcmp(input, "exit"))
+	if (!ft_strcmp(input, "exit") || !input || is_tokenable_sep(input[0]))
 		exit (0);
 	add_history(input);
 	token_list = lexical_analysis(&info, input);
