@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 14:44:59 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/12 16:07:44 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/12 16:49:56 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,44 @@ void	print_list(t_token *token_list)
 		token_list = token_list->next;
 	}
 	printf("-----------------\n");
+}
+
+void	merge_argv(t_token *cur, t_token *next)
+{
+	char	*res;
+
+	res = ft_strjoin(cur->str, next->str);
+	free(cur->str);
+	free(next->str);
+	cur->str = res;
+	cur->next = next->next;
+	free(next);
+}
+
+void	handle_arg(t_token *token_list)
+{
+	t_token	*next;
+	t_token	*head;
+	char	*res;
+
+	head = token_list;
+	if (head->next == 0)
+		return ;
+	while (token_list->next)
+	{
+		next = head->next;
+		if (token_list->type == TOKEN_TYPE_ARGV
+			&& next->type == TOKEN_TYPE_ARGV)
+		{
+			res = ft_strjoin(token_list->str, next->str);
+			free(token_list->str);
+			free(next->str);
+			token_list->str = res;
+			token_list->next = next->next;
+			free(next);
+		}
+		token_list = token_list->next;
+	}
 }
 
 void	handle_chunk(t_token *token_list)
@@ -64,6 +102,8 @@ void	lexical_analysis(t_info *info, char *s)
 	handle_seperator(token_list, ">");
 	print_list(token_list);
 	handle_chunk(token_list);
+	print_list(token_list);
+	handle_arg(token_list);
 	print_list(token_list);
 	token_listclear(&token_list);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_heredoc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
+/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 07:19:18 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/07 21:44:13 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/01/12 16:49:07 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ static int	handle_limiter(
 	{
 		if (s[start] == '\'' || s[start] == '\"')
 			start = handle_quote_in_limiter(info, token_list, s, start);
+		else if (s[start + 1] && s[start] == '$'
+			&& (s[start + 1] == '\'' || s[start + 1] == '\"'))
+			start++;
 		else
 		{
 			offset = 1;
