@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/14 20:17:29 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/14 20:30:21 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	print_cmd_list(t_cmd *cmd_list)
 	int			i;
 	t_redirect	*tmp;
 
-	i = 0;
 	while (cmd_list)
 	{
+		i = 0;
 		tmp = cmd_list->redirect;
 		printf("argv\n");
 		while (cmd_list->argv[i])

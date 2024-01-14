@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 17:31:50 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/14 20:10:45 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/14 20:32:14 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	cmd_listclear(t_cmd **lst)
 	while (cur)
 	{
 		node = cur;
-		free(cur->argv);
+		free_2d_str_array(cur->argv);
 		redirect_listclear(&(cur->redirect));
 		cur = cur->next;
 		free(node);
