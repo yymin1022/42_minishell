@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/12 21:16:38 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/14 17:39:09 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,7 @@ typedef struct s_cmd
 }	t_cmd;
 
 t_cmd	*make_cmdlist(t_token *token_list);
+t_cmd	*cmd_createnew(void);
+void	cmd_pushback(t_cmd **lst, t_cmd *new_node);
 
 #endif
