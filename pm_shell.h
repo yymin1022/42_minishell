@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/14 17:39:09 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/14 20:11:23 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,36 +62,36 @@ typedef struct s_token
 	struct s_token	*next;
 }t_token;
 
-t_token	*lexical_analysis(t_info *info, char *s);
-void	handle_heredoc(t_info *info, t_token *token_list);
+t_token		*lexical_analysis(t_info *info, char *s);
+void		handle_heredoc(t_info *info, t_token *token_list);
 
-int		is_tokenable_sep(char c);
-t_token	*token_createnew(char *token_str, t_token_type token_type);
-t_token	*token_pushback(t_token **lst, t_token *new);
-void	token_listclear(t_token **lst);
-t_token	*token_delete(t_token **lst, t_token *token);
+int			is_tokenable_sep(char c);
+t_token		*token_createnew(char *token_str, t_token_type token_type);
+t_token		*token_pushback(t_token **lst, t_token *new);
+void		token_listclear(t_token **lst);
+t_token		*token_delete(t_token **lst, t_token *token);
 
-t_env	*make_envlist(char **env);
-t_env	*env_createnew(char *s);
-void	env_pushback(t_env **lst, t_env *new_node);
-void	env_listclear(t_env **lst);
+t_env		*make_envlist(char **env);
+t_env		*env_createnew(char *s);
+void		env_pushback(t_env **lst, t_env *new_node);
+void		env_listclear(t_env **lst);
 
-void	handle_quote(t_info *info, t_token *token_list);
-char	*handle_double_quote_with_env(t_info *info, char *s);
-int		set_dollor_idx(char *s, int *dollor_idx, int *next_idx);
-char	*find_value_in_env(t_info *info, char *s);
+void		handle_quote(t_info *info, t_token *token_list);
+char		*handle_double_quote_with_env(t_info *info, char *s);
+int			set_dollor_idx(char *s, int *dollor_idx, int *next_idx);
+char		*find_value_in_env(t_info *info, char *s);
 
-void	handle_env(t_info *info, t_token *token_list);
+void		handle_env(t_info *info, t_token *token_list);
 
-void	handle_seperator(t_token *token_list, char *sep);
+void		handle_seperator(t_token *token_list, char *sep);
 
-size_t	ft_strcmp(char *src, char *dst);
-void	p_list(t_env *list);
-void	free_2d_str_array(char **arr);
-void	four_times_free(char *s1, char *s2, char *s3, char *s4);
+size_t		ft_strcmp(char *src, char *dst);
+void		p_list(t_env *list);
+void		free_2d_str_array(char **arr);
+void		four_times_free(char *s1, char *s2, char *s3, char *s4);
 
 //!SECTION syntax_analysis
-int		syntax_analysis(t_token *token_list);
+int			syntax_analysis(t_token *token_list);
 
 //!SECTION make cmd list
 typedef struct s_redirect
@@ -110,8 +110,14 @@ typedef struct s_cmd
 	struct s_cmd	*next;
 }	t_cmd;
 
-t_cmd	*make_cmdlist(t_token *token_list);
-t_cmd	*cmd_createnew(void);
-void	cmd_pushback(t_cmd **lst, t_cmd *new_node);
+t_cmd		*make_cmdlist(t_token *token_list);
+
+void		cmd_listclear(t_cmd **lst);
+t_cmd		*cmd_createnew(void);
+t_cmd		*cmd_pushback(t_cmd **lst, t_cmd *new_node);
+
+t_redirect	*redirect_createnew(char *file, char *type);
+void		redirect_pushback(t_redirect **lst, t_redirect *new_node);
+void		redirect_listclear(t_redirect **lst);
 
 #endif

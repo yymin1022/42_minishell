@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_listutil.c                                     :+:      :+:    :+:   */
+/*   redirect_listutil.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/14 17:31:50 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/14 20:10:45 by sangylee         ###   ########.fr       */
+/*   Created: 2024/01/14 19:47:06 by sangylee          #+#    #+#             */
+/*   Updated: 2024/01/14 19:53:47 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pm_shell.h"
 
-t_cmd	*cmd_createnew(void)
+t_redirect	*redirect_createnew(char *file, char *type)
 {
-	t_cmd	*node;
+	t_redirect	*node;
 
-	node = (t_cmd *)malloc(sizeof(t_cmd));
+	node = (t_redirect *)malloc(sizeof(t_redirect));
 	if (!node)
 		return (0);
-	node->argv = 0;
-	node->redirect = 0;
-	node->prev = 0;
+	node->file = ft_strdup(file);
+	node->type = ft_strdup(type);
 	node->next = 0;
 	return (node);
 }
 
-t_cmd	*cmd_pushback(t_cmd **lst, t_cmd *new_node)
+void	redirect_pushback(t_redirect **lst, t_redirect *new_node)
 {
-	t_cmd	*node;
+	t_redirect	*node;
 
 	if (*lst)
 	{
@@ -36,17 +35,15 @@ t_cmd	*cmd_pushback(t_cmd **lst, t_cmd *new_node)
 		while (node->next)
 			node = node->next;
 		node->next = new_node;
-		new_node->prev = node;
 	}
 	else
 		*lst = new_node;
-	return (new_node);
 }
 
-void	cmd_listclear(t_cmd **lst)
+void	redirect_listclear(t_redirect **lst)
 {
-	t_cmd	*node;
-	t_cmd	*cur;
+	t_redirect	*node;
+	t_redirect	*cur;
 
 	if (!lst)
 		return ;
@@ -54,8 +51,8 @@ void	cmd_listclear(t_cmd **lst)
 	while (cur)
 	{
 		node = cur;
-		free(cur->argv);
-		redirect_listclear(&(cur->redirect));
+		free(cur->file);
+		free(cur->type);
 		cur = cur->next;
 		free(node);
 	}

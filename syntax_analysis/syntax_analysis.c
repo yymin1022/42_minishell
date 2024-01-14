@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:35:37 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/12 20:57:59 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/14 20:09:03 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,12 @@ int	syntax_analysis(t_token *token_list)
 		cnt++;
 	}
 	if (cnt == 1 && token_list->type == TOKEN_TYPE_ARGV)
-		return (1);
+		return (0);
 	else if (cnt == 2 && token_list->type == TOKEN_TYPE_ARGV
 		&& token_list->next->type == TOKEN_TYPE_ARGV)
-		return (1);
+		return (0);
 	else if (cnt >= 3 && check_pipe_syntax(token_list)
 		&& check_redirection_syntax(token_list))
-		return (1);
-	return (0);
+		return (0);
+	return (1);
 }
