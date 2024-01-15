@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/15 12:49:25 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/15 13:27:51 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	print_cmd_list(t_cmd *cmd_list)
 			tmp = tmp->next;
 		}
 		cmd_list = cmd_list->next;
+		printf("---------**-------\n");
 	}
 	printf("-----------------\n");
 }
@@ -73,7 +74,7 @@ int	main(int argc, char **argv, char **env)
 	tmp = readline("pmshell> :$ ");
 	input = ft_strtrim(tmp, " ");
 	free(tmp);
-	if (!ft_strcmp(input, "exit") || !input || is_tokenable_sep(input[0]))
+	if (!ft_strcmp(input, "exit") || !input)
 		exit (0);
 	add_history(input);
 	token_list = lexical_analysis(&info, input);

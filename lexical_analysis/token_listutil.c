@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:11:54 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/12 16:07:03 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/15 13:11:45 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ t_token	*token_delete(t_token **lst, t_token *token)
 		cur = cur->next;
 		free(prev->str);
 		free(prev);
+		*lst = cur;
 		return (cur);
 	}
 	while (cur && cur->next != token)
