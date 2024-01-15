@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/14 20:30:21 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:49:25 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	init_info(t_info *info, char **env)
 int	main(int argc, char **argv, char **env)
 {
 	char	*input;
+	char	*tmp;
 	t_info	info;
 	t_token	*token_list;
 	t_cmd	*cmd_list;
@@ -69,7 +70,9 @@ int	main(int argc, char **argv, char **env)
 	(void)argc;
 	(void)argv;
 	init_info(&info, env);
-	input = readline("pmshell> :$ ");
+	tmp = readline("pmshell> :$ ");
+	input = ft_strtrim(tmp, " ");
+	free(tmp);
 	if (!ft_strcmp(input, "exit") || !input || is_tokenable_sep(input[0]))
 		exit (0);
 	add_history(input);
