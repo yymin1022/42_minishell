@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/20 17:39:29 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/20 18:43:31 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,9 +141,9 @@ int	main(int argc, char **argv, char **env)
 		//print_cmd_list(cmd_list);
 		run_cmd_list(cmd_list, info.env_list);
 		token_listclear(&token_list);
-		env_listclear(&(info.env_list));
 		cmd_listclear(&cmd_list);
 	}
+	env_listclear(&(info.env_list));
 	return (0);
 }
 
