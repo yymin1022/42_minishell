@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/20 16:19:53 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/20 16:20:40 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,6 @@ void	run_cmd(char **argv)
 
 void	run_cmd_list(t_cmd *cmd_list)
 {
-	int	i;
-
-	i = 0;
 	while (cmd_list)
 	{
 		if (cmd_list->argv)
