@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pm_shell.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/14 20:11:23 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/20 17:07:44 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PM_SHELL_H
 # define PM_SHELL_H
+# include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -119,5 +120,8 @@ t_cmd		*cmd_pushback(t_cmd **lst, t_cmd *new_node);
 t_redirect	*redirect_createnew(char *file, char *type);
 void		redirect_pushback(t_redirect **lst, t_redirect *new_node);
 void		redirect_listclear(t_redirect **lst);
+
+int			cmd_env(t_env *env_list);
+int			cmd_pwd(void);
 
 #endif
