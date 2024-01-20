@@ -6,11 +6,11 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 20:21:47 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/08 20:27:09 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/20 21:46:25 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sig_handle.h"
+#include "../pm_shell.h"
 
 static void	sig_handle(int sig)
 {
