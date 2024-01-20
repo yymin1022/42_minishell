@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/20 14:36:29 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/20 15:58:35 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,17 @@ void	print_cmd_list(t_cmd *cmd_list)
 		printf("---------**-------\n");
 	}
 	printf("-----------------\n");
+}
+
+void	run_cmd_list(t_cmd *cmd_list)
+{
+	int	i;
+
+	i = 0;
+	while (cmd_list)
+	{
+		cmd_list = cmd_list->next;
+	}
 }
 
 void	init_info(t_info *info, char **env)
@@ -100,6 +111,7 @@ int	main(int argc, char **argv, char **env)
 		print_list(token_list);
 		cmd_list = make_cmdlist(token_list);
 		print_cmd_list(cmd_list);
+		run_cmd_list(cmd_list);
 		token_listclear(&token_list);
 		env_listclear(&(info.env_list));
 		cmd_listclear(&cmd_list);
