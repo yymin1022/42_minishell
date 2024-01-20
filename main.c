@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/20 15:58:35 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/20 16:06:37 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,20 @@ void	print_cmd_list(t_cmd *cmd_list)
 	printf("-----------------\n");
 }
 
+int	is_builtin(char **argv)
+{
+	
+	return (0);
+}
+
+void	run_cmd(char **argv)
+{
+	if (!argv && !(argv[0]) && !is_builtin(argv))
+	{
+		// 환경변수에서 실행
+	}
+}
+
 void	run_cmd_list(t_cmd *cmd_list)
 {
 	int	i;
@@ -60,6 +74,8 @@ void	run_cmd_list(t_cmd *cmd_list)
 	i = 0;
 	while (cmd_list)
 	{
+		if (cmd_list->argv)
+			run_cmd(cmd_list->argv);
 		cmd_list = cmd_list->next;
 	}
 }
