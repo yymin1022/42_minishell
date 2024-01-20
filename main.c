@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/20 16:06:37 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/20 16:19:53 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,30 @@ void	print_cmd_list(t_cmd *cmd_list)
 
 int	is_builtin(char **argv)
 {
-	
+	if (!(argv[0]))
+		return (0);
+	else if (!ft_strcmp(argv[0], "echo"))
+		return (printf("echo\n"));
+	else if (!ft_strcmp(argv[0], "cd"))
+		return (printf("cd\n"));
+	else if (!ft_strcmp(argv[0], "pwd"))
+		return (printf("pwd\n"));
+	else if (!ft_strcmp(argv[0], "export"))
+		return (printf("export\n"));
+	else if (!ft_strcmp(argv[0], "unset"))
+		return (printf("unset\n"));
+	else if (!ft_strcmp(argv[0], "env"))
+		return (printf("env\n"));
+	else if (!ft_strcmp(argv[0], "exit"))
+		exit (0);
 	return (0);
 }
 
 void	run_cmd(char **argv)
 {
-	if (!argv && !(argv[0]) && !is_builtin(argv))
+	if (!argv || !(argv[0]))
+		return ;
+	if (!is_builtin(argv))
 	{
 		// 환경변수에서 실행
 	}
@@ -111,8 +128,6 @@ int	main(int argc, char **argv, char **env)
 			continue ;
 		}
 		free(tmp);
-		if (!ft_strcmp(input, "exit") || !input)
-			exit (0);
 		add_history(input);
 		token_list = lexical_analysis(&info, input);
 		free(input);
