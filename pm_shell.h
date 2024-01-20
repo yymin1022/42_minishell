@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pm_shell.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/14 20:11:23 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/20 16:30:39 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PM_SHELL_H
 # define PM_SHELL_H
+# include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
