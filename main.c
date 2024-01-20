@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/20 16:27:41 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/20 16:31:56 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	is_builtin(char **argv)
 	else if (!ft_strcmp(argv[0], "cd"))
 		return (printf("cd\n"));
 	else if (!ft_strcmp(argv[0], "pwd"))
-		return (printf("pwd\n"));
+		return (cmd_pwd());
 	else if (!ft_strcmp(argv[0], "export"))
 		return (printf("export\n"));
 	else if (!ft_strcmp(argv[0], "unset"))

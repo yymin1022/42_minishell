@@ -7,7 +7,7 @@ SRCS = main.c util.c \
 		$(wildcard lexical_analysis/*.c) \
 		$(wildcard syntax_analysis/*.c) \
 		$(wildcard cmd_list/*.c) \
-		$(wildcard built_int/*.c)
+		$(wildcard built_in/*.c)
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
