@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/20 17:09:01 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/20 17:39:29 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,20 +57,20 @@ int	is_builtin(char **argv, t_env *env_list)
 {
 	if (!(argv[0]))
 		return (0);
-	else if (!ft_strcmp(argv[0], "echo"))
-		return (printf("echo\n"));
 	else if (!ft_strcmp(argv[0], "cd"))
 		return (printf("cd\n"));
-	else if (!ft_strcmp(argv[0], "pwd"))
-		return (cmd_pwd());
-	else if (!ft_strcmp(argv[0], "export"))
-		return (printf("export\n"));
-	else if (!ft_strcmp(argv[0], "unset"))
-		return (printf("unset\n"));
+	else if (!ft_strcmp(argv[0], "echo"))
+		return (printf("echo\n"));
 	else if (!ft_strcmp(argv[0], "env"))
 		return (cmd_env(env_list));
 	else if (!ft_strcmp(argv[0], "exit"))
 		exit (0);
+	else if (!ft_strcmp(argv[0], "export"))
+		return (printf("export\n"));
+	else if (!ft_strcmp(argv[0], "pwd"))
+		return (cmd_pwd());
+	else if (!ft_strcmp(argv[0], "unset"))
+		return (printf("unset\n"));
 	return (0);
 }
 
