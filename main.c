@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/20 16:31:56 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/20 17:09:01 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	print_cmd_list(t_cmd *cmd_list)
 	printf("-----------------\n");
 }
 
-int	is_builtin(char **argv)
+int	is_builtin(char **argv, t_env *env_list)
 {
 	if (!(argv[0]))
 		return (0);
@@ -68,28 +68,28 @@ int	is_builtin(char **argv)
 	else if (!ft_strcmp(argv[0], "unset"))
 		return (printf("unset\n"));
 	else if (!ft_strcmp(argv[0], "env"))
-		return (printf("env\n"));
+		return (cmd_env(env_list));
 	else if (!ft_strcmp(argv[0], "exit"))
 		exit (0);
 	return (0);
 }
 
-void	run_cmd(char **argv)
+void	run_cmd(char **argv, t_env *env_list)
 {
 	if (!argv || !(argv[0]))
 		return ;
-	if (!is_builtin(argv))
+	if (!is_builtin(argv, env_list))
 	{
 		// 환경변수에서 실행
 	}
 }
 
-void	run_cmd_list(t_cmd *cmd_list)
+void	run_cmd_list(t_cmd *cmd_list, t_env *env_list)
 {
 	while (cmd_list)
 	{
 		if (cmd_list->argv)
-			run_cmd(cmd_list->argv);
+			run_cmd(cmd_list->argv, env_list);
 		cmd_list = cmd_list->next;
 	}
 }
@@ -139,7 +139,7 @@ int	main(int argc, char **argv, char **env)
 		//print_list(token_list);
 		cmd_list = make_cmdlist(token_list);
 		//print_cmd_list(cmd_list);
-		run_cmd_list(cmd_list);
+		run_cmd_list(cmd_list, info.env_list);
 		token_listclear(&token_list);
 		env_listclear(&(info.env_list));
 		cmd_listclear(&cmd_list);

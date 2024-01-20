@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/20 17:03:05 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/20 17:07:44 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ t_redirect	*redirect_createnew(char *file, char *type);
 void		redirect_pushback(t_redirect **lst, t_redirect *new_node);
 void		redirect_listclear(t_redirect **lst);
 
-int			cmd_env(void);
+int			cmd_env(t_env *env_list);
 int			cmd_pwd(void);
 
 #endif

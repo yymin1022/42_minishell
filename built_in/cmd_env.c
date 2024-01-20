@@ -6,13 +6,14 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:02:34 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/20 17:02:52 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/20 17:07:46 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pm_shell.h"
 
-int cmd_env(void)
+int cmd_env(t_env *env_list)
 {
+	
 	return (0);
 }
