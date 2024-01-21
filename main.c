@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/21 17:14:05 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/21 17:15:58 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,11 @@ int	main(int argc, char **argv, char **env)
 		}
 		token_list = lexical_analysis(&info, input);
 		add_history(input);
-		free(tmp);
-		free(input);
+		four_times_free(tmp, input, 0, 0);
 		if (!syntax_analysis(token_list))
 		{
-			info.is_error = 1;
 			ft_putstr_fd("pm_shell: invalid syntax\n", STDERR_FILENO);
 			token_listclear(&token_list);
-			env_listclear(&(info.env_list));
 			continue ;
 		}
 		cmd_list = make_cmdlist(token_list);
