@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 15:59:55 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/21 16:28:06 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/21 16:49:57 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "../pm_shell.h"
 
-typedef struct s_env t_env;
-typedef struct s_info t_info;
+typedef struct s_env	t_env;
+typedef struct s_info	t_info;
 
 /*NOTE
 	TOKEN_TYPE_CHUNK,// 해석될 여지가 아직 존재하는 단계
