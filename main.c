@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/21 16:37:17 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/21 16:40:54 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,6 @@ int	g_status_code;
 void	check_leak(void)
 {
 	system("leaks minishell");
-}
-
-void	run_cmd(char **argv, t_env *env_list)
-{
-	if (!argv || !(argv[0]))
-		return ;
-	if (!is_builtin(argv, env_list))
-	{
-		// 환경변수에서 실행
-	}
-}
-
-void	run_cmd_list(t_cmd *cmd_list, t_env *env_list)
-{
-	while (cmd_list)
-	{
-		if (cmd_list->argv)
-			run_cmd(cmd_list->argv, env_list);
-		cmd_list = cmd_list->next;
-	}
 }
 
 void	init_info(t_info *info, char **env)
@@ -87,7 +67,7 @@ int	main(int argc, char **argv, char **env)
 			continue ;
 		}
 		cmd_list = make_cmdlist(token_list);
-		run_cmd_list(cmd_list, info.env_list);
+		exec_cmd_list(cmd_list, info.env_list);
 		token_listclear(&token_list);
 		cmd_listclear(&cmd_list);
 	}

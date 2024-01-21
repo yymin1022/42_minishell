@@ -5,6 +5,7 @@ CLIB = -lreadline
 NAME = minishell
 SRCS = main.c util.c \
 		$(wildcard built_in/*.c) \
+		$(wildcard cmd_exec/*.c) \
 		$(wildcard cmd_list/*.c) \
 		$(wildcard lexical_analysis/*.c) \
 		$(wildcard syntax_analysis/*.c) \
