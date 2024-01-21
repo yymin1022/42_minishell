@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:34:28 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/21 16:35:33 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/21 16:49:29 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CMD_LIST_H
 # include "../pm_shell.h"
 
-typedef struct s_token t_token;
+typedef struct s_token	t_token;
 
 typedef struct s_redirect
 {
