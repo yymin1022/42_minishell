@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/21 16:53:06 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/21 17:11:20 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,17 @@ int	main(int argc, char **argv, char **env)
 	while (!info.is_error)
 	{
 		tmp = readline("pmshell> :$ ");
+		if (!tmp)
+			exit(0);
 		input = ft_strtrim(tmp, " ");
 		if (input[0] == '\0')
 		{
 			four_times_free(tmp, input, 0, 0);
-			info.is_error = 1;
-			ft_putstr_fd("pm_shell: invalid syntax\n", STDERR_FILENO);
-			env_listclear(&(info.env_list));
 			continue ;
 		}
-		free(tmp);
-		add_history(input);
 		token_list = lexical_analysis(&info, input);
+		add_history(input);
+		free(tmp);
 		free(input);
 		if (!syntax_analysis(token_list))
 		{
