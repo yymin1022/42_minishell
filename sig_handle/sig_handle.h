@@ -6,12 +6,13 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 20:21:17 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/20 21:49:40 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/21 16:31:23 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SIG_HANDLE_H
 # define SIG_HANDLE_H
+# include "../pm_shell.h"
 
 void	register_sig_handler();
 
