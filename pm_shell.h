@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/21 16:27:44 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/21 16:33:39 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include "lexical_analysis/lexical_analysis.h"
 # include "libft/libft.h"
 # include "sig_handle/sig_handle.h"
+# include "syntax_analysis/syntax_analysis.h"
 
 //SECTION - main.c
 
@@ -36,10 +37,7 @@ typedef struct s_info
 {
 	t_env	*env_list;
 	int		is_error;
-}t_info;
-
-//!SECTION syntax_analysis
-int			syntax_analysis(t_token *token_list);
+}t_info;\
 
 //!SECTION make cmd list
 typedef struct s_redirect
