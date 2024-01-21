@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   handle_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 22:45:26 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/11 01:57:19 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/21 17:04:14 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pm_shell.h"
+#include "lexical_analysis.h"
 
 extern int	g_status_code;
 
-char	**handle_env_with_question_mark(void)
+static char	**handle_env_with_question_mark(void)
 {
 	char	**strs;
 
@@ -28,7 +28,7 @@ char	**handle_env_with_question_mark(void)
 	return (strs);
 }
 
-char	**find_value_in_env_without_quote(
+static char	**find_value_in_env_without_quote(
 	t_info *info, char *s, int dollor_idx, int next_idx)
 {
 	char	**strs;
@@ -52,7 +52,7 @@ char	**find_value_in_env_without_quote(
 	return (strs);
 }
 
-char	**handle_env_without_quote(t_info *info, char *s)
+static char	**handle_env_without_quote(t_info *info, char *s)
 {
 	char	**strs;
 	int		dollor_idx;
@@ -78,7 +78,7 @@ char	**handle_env_without_quote(t_info *info, char *s)
 	return (strs);
 }
 
-void	make_token_in_env(t_token *token_list, char **strs)
+static void	make_token_in_env(t_token *token_list, char **strs)
 {
 	t_token	*tmp;
 

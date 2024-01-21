@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_pwd.c                                          :+:      :+:    :+:   */
+/*   cmd_exec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 16:28:46 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/21 16:43:55 by yonyoo           ###   ########seoul.kr  */
+/*   Created: 2024/01/21 16:39:09 by yonyoo            #+#    #+#             */
+/*   Updated: 2024/01/21 17:06:00 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "built_in.h"
+#include "cmd_exec.h"
 
-int	cmd_pwd(void)
+static void	exec_cmd(char **argv, t_env *env_list)
 {
-	char	cwd[PATH_MAX];
-
-	if (getcwd (cwd, PATH_MAX))
+	if (!argv || !(argv[0]))
+		return ;
+	if (!is_builtin(argv, env_list))
 	{
-		printf("%s\n", cwd);
-		return (1);
+		// 환경변수에서 실행
 	}
-	else
-		return (0);
+}
+
+void	exec_cmd_list(t_cmd *cmd_list, t_env *env_list)
+{
+	while (cmd_list)
+	{
+		if (cmd_list->argv)
+			exec_cmd(cmd_list->argv, env_list);
+		cmd_list = cmd_list->next;
+	}
 }

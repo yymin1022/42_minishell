@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   handle_seperator.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 00:44:16 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/11 02:24:47 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/21 17:03:25 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pm_shell.h"
+#include "lexical_analysis.h"
 
-int	set_sep_idx(char *s, char *sep, int *start_idx, int *end_idx)
+static int	set_sep_idx(char *s, char *sep, int *start_idx, int *end_idx)
 {
 	(*start_idx) = 0;
 	(*end_idx) = -1;
@@ -24,7 +24,7 @@ int	set_sep_idx(char *s, char *sep, int *start_idx, int *end_idx)
 	return (1);
 }
 
-char	**handle_seperator_with_strs(char *s, char *sep)
+static char	**handle_seperator_with_strs(char *s, char *sep)
 {
 	int		start_idx;
 	int		end_idx;
@@ -42,7 +42,7 @@ char	**handle_seperator_with_strs(char *s, char *sep)
 	return (strs);
 }
 
-void	make_token_in_seperator(t_token *token_list, char *sep, char **strs)
+static void	make_token_in_seperator(t_token *token_list, char *sep, char **strs)
 {
 	t_token	*tmp;
 

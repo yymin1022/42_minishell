@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   lexical_analysis.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 14:44:59 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/15 13:26:33 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/21 17:03:01 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pm_shell.h"
+#include "lexical_analysis.h"
 
-void	handle_space(t_token **token_list)
+static void	handle_space(t_token **token_list)
 {
 	t_token	**head;
 	t_token	*cur;
@@ -27,7 +27,7 @@ void	handle_space(t_token **token_list)
 	}
 }
 
-void	handle_arg(t_token **token_list)
+static void	handle_arg(t_token **token_list)
 {
 	t_token	**head;
 	t_token	*cur;
@@ -56,7 +56,7 @@ void	handle_arg(t_token **token_list)
 	}
 }
 
-void	handle_chunk(t_token **token_list)
+static void	handle_chunk(t_token **token_list)
 {
 	t_token	**head;
 	t_token	*cur;

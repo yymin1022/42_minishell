@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   redirect_listutil.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 19:47:06 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/14 19:53:47 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/21 17:05:15 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pm_shell.h"
+#include "cmd_list.h"
 
 t_redirect	*redirect_createnew(char *file, char *type)
 {

@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_pwd.c                                          :+:      :+:    :+:   */
+/*   sig_handle.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 16:28:46 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/21 16:43:55 by yonyoo           ###   ########seoul.kr  */
+/*   Created: 2024/01/08 20:21:47 by yonyoo            #+#    #+#             */
+/*   Updated: 2024/01/21 17:14:11 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "built_in.h"
+#include "sig_handle.h"
 
-int	cmd_pwd(void)
+static void	sig_int_handle(int sig)
 {
-	char	cwd[PATH_MAX];
+	(void)sig;
+	printf("\n");
+	rl_on_new_line();
+	rl_replace_line("", 1);
+	rl_redisplay();
+}
 
-	if (getcwd (cwd, PATH_MAX))
-	{
-		printf("%s\n", cwd);
-		return (1);
-	}
-	else
-		return (0);
+void	init_sig_handler(void)
+{
+	signal(SIGINT, sig_int_handle);
+	signal(SIGQUIT, SIG_IGN);
 }

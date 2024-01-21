@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_pwd.c                                          :+:      :+:    :+:   */
+/*   built_in.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 16:28:46 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/21 16:43:55 by yonyoo           ###   ########seoul.kr  */
+/*   Created: 2024/01/21 15:57:30 by yonyoo            #+#    #+#             */
+/*   Updated: 2024/01/21 16:42:47 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "built_in.h"
+#ifndef BUILT_IN_H
+# define BUILT_IN_H
+# include "../pm_shell.h"
 
-int	cmd_pwd(void)
-{
-	char	cwd[PATH_MAX];
+typedef struct s_env	t_env;
+typedef struct s_token	t_token;
 
-	if (getcwd (cwd, PATH_MAX))
-	{
-		printf("%s\n", cwd);
-		return (1);
-	}
-	else
-		return (0);
-}
+int	cmd_env(t_env *env_list);
+int	cmd_pwd(void);
+int	is_builtin(char **argv, t_env *env_list);
+
+#endif

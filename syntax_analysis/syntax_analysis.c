@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_analysis.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:35:37 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/14 21:07:19 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/21 16:54:27 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pm_shell.h"
 
-int	check_pipe_syntax(t_token *token_list)
+static int	check_pipe_syntax(t_token *token_list)
 {
 	t_token	*prev;
 
@@ -29,7 +29,7 @@ int	check_pipe_syntax(t_token *token_list)
 	return (1);
 }
 
-int	check_redirection_syntax(t_token *token_list)
+static int	check_redirection_syntax(t_token *token_list)
 {
 	while (token_list)
 	{
