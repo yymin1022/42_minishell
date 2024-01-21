@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 20:21:47 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/21 16:51:11 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/21 17:14:11 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	sig_int_handle(int sig)
 	rl_redisplay();
 }
 
-void	register_sig_handler(void)
+void	init_sig_handler(void)
 {
 	signal(SIGINT, sig_int_handle);
 	signal(SIGQUIT, SIG_IGN);
