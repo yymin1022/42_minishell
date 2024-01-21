@@ -6,11 +6,11 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:02:34 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/20 18:40:51 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/21 16:11:33 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pm_shell.h"
+#include "built_in.h"
 
 static void	print_env(char *key, char *val)
 {

@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/21 15:48:44 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/21 16:19:42 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <readline/history.h>
 # include <readline/readline.h>
+# include "built_in/built_in.h"
 # include "libft/libft.h"
 # include "sig_handle/sig_handle.h"
 
@@ -122,8 +123,5 @@ t_cmd		*cmd_pushback(t_cmd **lst, t_cmd *new_node);
 t_redirect	*redirect_createnew(char *file, char *type);
 void		redirect_pushback(t_redirect **lst, t_redirect *new_node);
 void		redirect_listclear(t_redirect **lst);
-
-int			cmd_env(t_env *env_list);
-int			cmd_pwd(void);
 
 #endif
