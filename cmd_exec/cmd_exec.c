@@ -6,13 +6,13 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:39:09 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/21 16:49:02 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/21 17:06:00 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd_exec.h"
 
-void	exec_cmd(char **argv, t_env *env_list)
+static void	exec_cmd(char **argv, t_env *env_list)
 {
 	if (!argv || !(argv[0]))
 		return ;
