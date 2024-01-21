@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:38:37 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/21 16:41:17 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/21 16:49:09 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CMD_EXEC_H
 # include "../pm_shell.h"
 
-typedef struct s_cmd t_cmd;
+typedef struct s_cmd	t_cmd;
 
 void	exec_cmd_list(t_cmd *cmd_list, t_env *env_list);
 
