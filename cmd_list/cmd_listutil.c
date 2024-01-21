@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_listutil.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 17:31:50 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/14 20:32:14 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/21 16:35:53 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pm_shell.h"
+#include "cmd_list.h"
 
 t_cmd	*cmd_createnew(void)
 {

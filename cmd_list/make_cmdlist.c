@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   make_cmdlist.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 21:13:59 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/14 20:12:34 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/21 16:35:57 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pm_shell.h"
+#include "cmd_list.h"
 
 int	get_argv_cnt(t_token *token_list)
 {
@@ -71,6 +71,6 @@ t_cmd	*make_cmdlist(t_token *token_list)
 		else if (token_list->type == TOKEN_TYPE_PIPELINE)
 			cmd_list = cmd_pushback(&cmd_list, cmd_createnew());
 		token_list = token_list->next;
-	}	
+	}
 	return (head);
 }
