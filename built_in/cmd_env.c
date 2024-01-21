@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:02:34 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/21 16:11:33 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/21 16:43:01 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	print_env(char *key, char *val)
 	printf("%s=%s\n", key, val);
 }
 
-int cmd_env(t_env *env_list)
+int	cmd_env(t_env *env_list)
 {
 	while (env_list)
 	{
