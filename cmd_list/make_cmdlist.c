@@ -6,13 +6,13 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 21:13:59 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/21 16:35:57 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/21 17:05:02 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd_list.h"
 
-int	get_argv_cnt(t_token *token_list)
+static int	get_argv_cnt(t_token *token_list)
 {
 	int	cnt;
 
@@ -28,7 +28,7 @@ int	get_argv_cnt(t_token *token_list)
 	return (cnt);
 }
 
-char	**make_argvlist(t_token *token_list)
+static char	**make_argvlist(t_token *token_list)
 {
 	int		idx;
 	char	**argv_list;
