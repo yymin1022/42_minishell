@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/21 14:42:46 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/21 15:51:59 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,14 @@ int	main(int argc, char **argv, char **env)
 	t_info	info;
 	t_token	*token_list;
 	t_cmd	*cmd_list;
+	struct termios term;
 
 	atexit(check_leak);
 	(void)argc;
 	(void)argv;
+    tcgetattr(STDIN_FILENO, &term);
+    term.c_lflag &= ~(ECHOCTL);
+    tcsetattr(STDIN_FILENO, TCSANOW, &term);
 	init_info(&info, env);
 	register_sig_handler();
 	while (!info.is_error)

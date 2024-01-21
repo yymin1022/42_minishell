@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/21 14:42:16 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/21 15:48:44 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <termios.h>
 # include <unistd.h>
 # include <readline/history.h>
 # include <readline/readline.h>
