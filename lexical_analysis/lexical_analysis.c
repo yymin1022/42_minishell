@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   lexical_analysis.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 14:44:59 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/15 13:26:33 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/21 16:28:44 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pm_shell.h"
+#include "lexical_analysis.h"
 
 void	handle_space(t_token **token_list)
 {

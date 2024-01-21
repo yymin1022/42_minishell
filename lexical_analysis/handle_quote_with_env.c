@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   handle_quote_with_env.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:08:01 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/10 23:16:01 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/21 16:28:37 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pm_shell.h"
+#include "lexical_analysis.h"
 
 extern int	g_status_code;
 

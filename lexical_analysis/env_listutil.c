@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   env_listutil.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:11:54 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/07 23:09:05 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/01/21 16:28:23 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pm_shell.h"
+#include "lexical_analysis.h"
 
 t_env	*make_envlist(char **env)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   handle_seperator.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 00:44:16 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/11 02:24:47 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/21 16:28:42 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pm_shell.h"
+#include "lexical_analysis.h"
 
 int	set_sep_idx(char *s, char *sep, int *start_idx, int *end_idx)
 {

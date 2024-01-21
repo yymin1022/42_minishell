@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   token_listutil.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:11:54 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/15 13:11:45 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/21 16:28:46 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pm_shell.h"
+#include "lexical_analysis.h"
 
 t_token	*token_createnew(char *token_str, t_token_type token_type)
 {
