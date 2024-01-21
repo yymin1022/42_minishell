@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 20:21:17 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/21 16:31:23 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/21 16:51:16 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 # define SIG_HANDLE_H
 # include "../pm_shell.h"
 
-void	register_sig_handler();
+void	register_sig_handler(void);
 
 #endif
