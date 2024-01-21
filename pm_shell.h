@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/21 16:35:12 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/21 16:36:44 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@
 # include "libft/libft.h"
 # include "sig_handle/sig_handle.h"
 # include "syntax_analysis/syntax_analysis.h"
-
-//SECTION - main.c
 
 typedef struct s_env{
 	char			*key;
