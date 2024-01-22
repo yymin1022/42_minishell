@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:11:54 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/21 17:04:34 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/22 20:26:25 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,17 @@ void	env_listclear(t_env **lst)
 		free(node);
 	}
 	*lst = NULL;
+}
+
+size_t	env_getcnt(t_env *lst)
+{
+	size_t	idx;
+
+	idx = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		idx++;
+	}
+	return (idx);
 }
