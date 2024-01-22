@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 15:57:07 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/21 16:01:44 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/22 19:57:49 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	is_builtin(char **argv, t_env *env_list)
 	else if (!ft_strcmp(argv[0], "exit"))
 		exit (0);
 	else if (!ft_strcmp(argv[0], "export"))
-		return (printf("export\n"));
+		return (cmd_export(argv, env_list));
 	else if (!ft_strcmp(argv[0], "pwd"))
 		return (cmd_pwd());
 	else if (!ft_strcmp(argv[0], "unset"))
