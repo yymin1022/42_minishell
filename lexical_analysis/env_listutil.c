@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_listutil.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:11:54 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/23 22:21:45 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/01/25 01:03:27 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,17 @@ void	env_listclear(t_env **lst)
 		free(node);
 	}
 	*lst = NULL;
+}
+
+size_t	env_getcnt(t_env *lst)
+{
+	size_t	idx;
+
+	idx = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		idx++;
+	}
+	return (idx);
 }
