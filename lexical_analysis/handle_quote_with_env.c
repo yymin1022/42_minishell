@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_quote_with_env.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:08:01 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/21 17:03:53 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/23 22:47:02 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,23 @@ extern int	g_status_code;
 char	*find_value_in_env(t_info *info, char *s)
 {
 	t_env	*cur;
+	char	*equal_idx;
+	char	*key;
+	char	*value;
 
 	cur = info->env_list;
 	while (cur)
 	{
-		if (!ft_strncmp(cur->key, s, ft_strlen(s))
-			&& ft_strlen(cur->key) == ft_strlen(s))
+		equal_idx = ft_strchr(cur->str, '=');
+		key = ft_substr(cur->str, 0, equal_idx - cur->str);
+		value = ft_strdup(equal_idx + 1);
+		if (!ft_strncmp(key, s, ft_strlen(s)) && ft_strlen(key) == ft_strlen(s))
 		{
 			free(s);
-			return (ft_strdup(cur->value));
+			free(key);
+			return (value);
 		}
+		four_times_free(key, value, NULL, NULL);
 		cur = cur->next;
 	}
 	free(s);

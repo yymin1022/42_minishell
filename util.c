@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 21:58:39 by isang-yun         #+#    #+#             */
-/*   Updated: 2024/01/10 17:59:42 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/23 22:29:06 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	p_list(t_env *list)
 {
 	while (list)
 	{
-		printf("%s %s\n", list->key, list->value);
+		printf("%s\n", list->str);
 		list = list->next;
 	}
 	printf("-----------------\n");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pm_shell.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/21 16:39:38 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/23 22:19:54 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@
 # include "syntax_analysis/syntax_analysis.h"
 
 typedef struct s_env{
-	char			*key;
-	char			*value;
+	char			*str;
 	struct s_env	*next;
 }t_env;
 
