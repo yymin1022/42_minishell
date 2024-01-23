@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_listutil.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:11:54 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/21 17:04:34 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/23 22:21:45 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,11 @@ t_env	*make_envlist(char **env)
 t_env	*env_createnew(char *s)
 {
 	t_env	*node;
-	char	*equal_idx;
 
 	node = (t_env *)malloc(sizeof(t_env));
 	if (!node)
 		return (NULL);
-	equal_idx = ft_strchr(s, '=');
-	node->key = ft_substr(s, 0, equal_idx - s);
-	node->value = ft_strdup(equal_idx + 1);
+	node->str = ft_strdup(s);
 	node->next = NULL;
 	return (node);
 }
@@ -65,8 +62,7 @@ void	env_listclear(t_env **lst)
 	while (cur)
 	{
 		node = cur;
-		free(cur->key);
-		free(cur->value);
+		free(cur->str);
 		cur = cur->next;
 		free(node);
 	}
