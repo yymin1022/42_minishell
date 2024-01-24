@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:02:34 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/25 01:09:36 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/25 01:21:11 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	is_target_env(char *str, char *env)
 			return (0);
 		i++;
 	}
-	if (env[i] != '=' || str[i] != env[i])
+	if (env[i] != '=' && str[i] != env[i])
 		return (0);
 	return (1);
 }
