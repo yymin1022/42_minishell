@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 15:59:55 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/25 01:54:46 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/25 03:08:43 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void		handle_env(t_info *info, t_token *token_list);
 
 void		handle_seperator(t_token *token_list, char *sep);
 
-size_t		ft_strcmp(char *src, char *dst);
+ssize_t		ft_strcmp(char *src, char *dst);
 void		p_list(t_env *list);
 void		free_2d_str_array(char **arr);
 void		four_times_free(char *s1, char *s2, char *s3, char *s4);
