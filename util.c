@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 21:58:39 by isang-yun         #+#    #+#             */
-/*   Updated: 2024/01/26 01:20:22 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/26 01:24:33 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,17 @@ void	four_times_free(char *s1, char *s2, char *s3, char *s4)
 		free(s4);
 }
 
-int	is_valid_env_key(char *str)
+int	is_valid_env_key(char *str, int is_unset)
 {
 	size_t	i;
 
 	if (!str || (!ft_isalpha(str[0]) && str[0] != '_'))
 		return (0);
 	i = 0;
-	while (str[i] && str[i] != '=')
+	while (str[i])
 	{
+		if (str[i] == '=')
+			return (!is_unset);
 		if (!ft_isalnum(str[i]) && str[i] != '_')
 			return (0);
 		i++;
