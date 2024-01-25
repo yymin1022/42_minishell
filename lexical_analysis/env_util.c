@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:24:51 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/25 21:13:57 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/25 21:20:56 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	is_value_available(char *str)
 	{
 		if (str[i] == '=')
 			return (1);
+		i++;
 	}
 	return (0);
 }
