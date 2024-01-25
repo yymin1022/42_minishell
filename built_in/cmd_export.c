@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:02:34 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/25 03:13:11 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/25 22:56:49 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,16 @@ static int	is_in_env(char *str, t_env *env_list)
 	{
 		if (is_target_env(str, env_list->str))
 		{
-			free(env_list->str);
-			env_list->str = ft_strdup(str);
-			return (1);
+			if (!is_value_available(env_list->str)
+				|| (is_value_available(env_list->str)
+					&& is_value_available(str)))
+			{
+				free(env_list->str);
+				env_list->str = ft_strdup(str);
+				return (1);
+			}
+			if (is_value_available(env_list->str))
+				return (1);
 		}
 		env_list = env_list->next;
 	}
@@ -29,13 +36,20 @@ static int	is_in_env(char *str, t_env *env_list)
 
 static void	print_env_str_list(char **env_list)
 {
+	char	*key;
+	char	*value;
 	size_t	i;
 
 	i = 0;
 	while (env_list[i])
 	{
-		printf("declare -x %s\n", env_list[i]);
-		free(env_list[i]);
+		key = get_env_key(env_list[i]);
+		value = get_env_value(env_list[i]);
+		if (value)
+			printf("declare -x %s=\"%s\"\n", key, value);
+		else
+			printf("declare -x %s\n", key);
+		four_times_free(env_list[i], key, value, 0);
 		i++;
 	}
 	free(env_list);
