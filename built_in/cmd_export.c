@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:02:34 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/25 22:56:49 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/26 01:31:40 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,9 @@ int	cmd_export(char **str, t_env *env_list)
 	i = 1;
 	while (str[i])
 	{
-		if (!is_in_env(str[i], env_list))
+		if (!is_valid_env_key(str[i], 0))
+			print_argument_err(str[i]);
+		else if (!is_in_env(str[i], env_list))
 			env_pushback(&env_list, env_createnew(str[i]));
 		i++;
 	}
