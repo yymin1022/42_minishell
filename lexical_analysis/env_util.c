@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:24:51 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/25 21:20:56 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/25 22:55:41 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,54 @@ int	is_value_available(char *str)
 		i++;
 	}
 	return (0);
+}
+
+char	*get_env_key(char *str)
+{
+	char	*tmp;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (str && str[i] && str[i] != '=')
+		i++;
+	tmp = (char *)malloc(sizeof(char) * (i + 1));
+	if (!tmp)
+		return (NULL);
+	tmp[i] = '\0';
+	j = 0;
+	while (j < i)
+	{
+		tmp[j] = str[j];
+		j++;
+	}
+	return (tmp);
+}
+
+char	*get_env_value(char *str)
+{
+	char	*tmp;
+	size_t	i;
+	size_t	j;
+	size_t	size;
+
+	i = 0;
+	while (str && str[i] && str[i] != '=')
+		i++;
+	if (!str[i])
+		return (NULL);
+	size = -1;
+	while (str[i + size])
+		size++;
+	tmp = (char *)malloc(sizeof(char) * (size + 1));
+	if (!tmp)
+		return (NULL);
+	tmp[size] = '\0';
+	j = 0;
+	while (j < size)
+	{
+		tmp[j] = str[i + j + 1];
+		j++;
+	}
+	return (tmp);
 }
