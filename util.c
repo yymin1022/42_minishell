@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 21:58:39 by isang-yun         #+#    #+#             */
-/*   Updated: 2024/01/25 03:07:40 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/26 01:15:38 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,20 @@ void	four_times_free(char *s1, char *s2, char *s3, char *s4)
 		free(s3);
 	if (s4)
 		free(s4);
+}
+
+int		is_valid_env_key(char *str)
+{
+	size_t	i;
+
+	if (!str || (!ft_isalpha(str[0]) && str[0] != '_'))
+		return (0);
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isalnum(str[0] && str[i] != '_'))
+			return (0);
+		i++;
+	}
+	return (1);
 }
