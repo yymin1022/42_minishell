@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 21:58:39 by isang-yun         #+#    #+#             */
-/*   Updated: 2024/01/23 22:29:06 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/01/25 03:07:40 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pm_shell.h"
 
-size_t	ft_strcmp(char *src, char *dst)
+ssize_t	ft_strcmp(char *src, char *dst)
 {
-	size_t	i;
+	ssize_t	i;
 
 	i = 0;
 	while (src[i] && dst[i] && src[i] == dst[i])

@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 15:59:55 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/21 16:49:57 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/25 03:13:59 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ t_env		*make_envlist(char **env);
 t_env		*env_createnew(char *s);
 void		env_pushback(t_env **lst, t_env *new_node);
 void		env_listclear(t_env **lst);
+size_t		env_getcnt(t_env *lst);
+int			is_target_env(char *str, char *env);
 
 void		handle_quote(t_info *info, t_token *token_list);
 char		*handle_double_quote_with_env(t_info *info, char *s);
@@ -69,7 +71,7 @@ void		handle_env(t_info *info, t_token *token_list);
 
 void		handle_seperator(t_token *token_list, char *sep);
 
-size_t		ft_strcmp(char *src, char *dst);
+ssize_t		ft_strcmp(char *src, char *dst);
 void		p_list(t_env *list);
 void		free_2d_str_array(char **arr);
 void		four_times_free(char *s1, char *s2, char *s3, char *s4);

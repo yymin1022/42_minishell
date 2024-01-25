@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 15:57:30 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/21 16:42:47 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/22 21:30:02 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ typedef struct s_env	t_env;
 typedef struct s_token	t_token;
 
 int	cmd_env(t_env *env_list);
+int	cmd_export(char **str, t_env *env_list);
 int	cmd_pwd(void);
+int	cmd_unset(char **argv, t_env *env_list);
 int	is_builtin(char **argv, t_env *env_list);
 
 #endif
