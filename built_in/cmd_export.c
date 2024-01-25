@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:02:34 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/25 03:13:11 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/25 21:39:17 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,16 @@ static int	is_in_env(char *str, t_env *env_list)
 	{
 		if (is_target_env(str, env_list->str))
 		{
-			free(env_list->str);
-			env_list->str = ft_strdup(str);
-			return (1);
+			if (!is_value_available(env_list->str)
+				|| (is_value_available(env_list->str)
+					&& is_value_available(str)))
+					{
+						free(env_list->str);
+						env_list->str = ft_strdup(str);
+						return (1);
+					}
+			if (is_value_available(env_list->str))
+				return (1);
 		}
 		env_list = env_list->next;
 	}
