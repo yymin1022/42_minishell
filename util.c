@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 21:58:39 by isang-yun         #+#    #+#             */
-/*   Updated: 2024/01/26 01:18:27 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/26 01:20:22 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	is_valid_env_key(char *str)
 	i = 0;
 	while (str[i] && str[i] != '=')
 	{
-		if (!ft_isalnum(str[0] && str[i] != '_'))
+		if (!ft_isalnum(str[i]) && str[i] != '_')
 			return (0);
 		i++;
 	}
