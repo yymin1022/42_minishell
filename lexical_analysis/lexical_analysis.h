@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 15:59:55 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/25 03:13:59 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/25 21:14:11 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void		env_pushback(t_env **lst, t_env *new_node);
 void		env_listclear(t_env **lst);
 size_t		env_getcnt(t_env *lst);
 int			is_target_env(char *str, char *env);
+int			is_value_available(char *str);
 
 void		handle_quote(t_info *info, t_token *token_list);
 char		*handle_double_quote_with_env(t_info *info, char *s);

@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:24:51 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/25 18:25:12 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/25 21:13:57 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,17 @@ int	is_target_env(char *str, char *env)
 	if (str[i] != '=' && str[i] && env[i] != '=' && env[i])
 		return (0);
 	return (1);
+}
+
+int	is_value_available(char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str && str[i])
+	{
+		if (str[i] == '=')
+			return (1);
+	}
+	return (0);
 }
