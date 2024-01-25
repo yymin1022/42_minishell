@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:28:46 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/21 16:43:55 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/26 01:38:48 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 int	cmd_pwd(void)
 {
-	char	cwd[PATH_MAX];
+	char	*cwd;
 
-	if (getcwd (cwd, PATH_MAX))
-	{
-		printf("%s\n", cwd);
-		return (1);
-	}
-	else
+	cwd = getcwd (NULL, 0);
+	if (!cwd)
 		return (0);
+	printf("%s\n", cwd);
+	free(cwd);
+	return (1);
 }
