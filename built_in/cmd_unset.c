@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:02:34 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/25 18:24:12 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/26 01:33:35 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,39 +38,17 @@ static void	del_env(char *str, t_env **env_list)
 	}
 }
 
-static int	is_valid_arg(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '=')
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
 int	cmd_unset(char **argv, t_env *env_list)
 {
-	char	*tmp;
 	int		i;
 
-	i = 0;
+	i = 1;
 	while (argv[i])
 	{
-		if (is_valid_arg(argv[i]))
+		if (is_valid_env_key(argv[i], 1))
 			del_env(argv[i], &env_list);
 		else
-		{
-			tmp = ft_strjoin("Invalid Argument : ", argv[i]);
-			if (tmp)
-			{
-				ft_putendl_fd(tmp, 2);
-				free(tmp);
-			}
-		}
+			print_argument_err(argv[i]);
 		i++;
 	}
 	return (1);

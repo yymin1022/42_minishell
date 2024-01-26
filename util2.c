@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   built_in.h                                         :+:      :+:    :+:   */
+/*   util2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 15:57:30 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/26 01:41:57 by yonyoo           ###   ########seoul.kr  */
+/*   Created: 2024/01/26 01:32:00 by yonyoo            #+#    #+#             */
+/*   Updated: 2024/01/26 01:32:55 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILT_IN_H
-# define BUILT_IN_H
-# include "../pm_shell.h"
+#include "pm_shell.h"
 
-typedef struct s_env	t_env;
-typedef struct s_token	t_token;
+void	print_argument_err(char *str)
+{
+	char	*tmp;
 
-int	cmd_echo(char **argv);
-int	cmd_env(t_env *env_list);
-int	cmd_export(char **str, t_env *env_list);
-int	cmd_pwd(void);
-int	cmd_unset(char **argv, t_env *env_list);
-int	is_builtin(char **argv, t_env *env_list);
-
-#endif
+	tmp = ft_strjoin("Invalid Argument : ", str);
+	if (!tmp)
+		return ;
+	ft_putendl_fd(tmp, 2);
+	free(tmp);
+}

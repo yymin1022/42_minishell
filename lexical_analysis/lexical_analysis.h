@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 15:59:55 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/25 22:11:23 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/26 01:23:12 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void		env_listclear(t_env **lst);
 size_t		env_getcnt(t_env *lst);
 int			is_target_env(char *str, char *env);
 int			is_value_available(char *str);
+int			is_valid_env_key(char *str, int is_unset);
 char		*get_env_key(char *str);
 char		*get_env_value(char *str);
 

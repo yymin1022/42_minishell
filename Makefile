@@ -3,7 +3,7 @@ CFLAGS = -Wall -Werror -Wextra -g
 CLIB = -lreadline
 
 NAME = minishell
-SRCS = main.c util.c \
+SRCS = main.c util.c util2.c \
 		$(wildcard built_in/*.c) \
 		$(wildcard cmd_exec/*.c) \
 		$(wildcard cmd_list/*.c) \

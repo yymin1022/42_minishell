@@ -3,25 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:02:34 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/23 22:30:19 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/01/26 01:11:14 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built_in.h"
 
-static void	print_env(char *str)
-{
-	printf("%s\n", str);
-}
-
 int	cmd_env(t_env *env_list)
 {
+	char	*tmp;
+
 	while (env_list)
 	{
-		print_env(env_list->str);
+		tmp = get_env_value(env_list->str);
+		if (tmp)
+		{
+			printf("%s\n", env_list->str);
+			free(tmp);
+		}
 		env_list = env_list->next;
 	}
 	return (1);
