@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pm_shell.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/26 01:32:34 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/27 15:50:22 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <termios.h>
 # include <unistd.h>
+# include <fcntl.h>
 # include <readline/history.h>
 # include <readline/readline.h>
 # include "built_in/built_in.h"
