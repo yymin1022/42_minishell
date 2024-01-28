@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 00:11:56 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/29 02:14:10 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/29 05:24:59 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,29 +48,52 @@ static char	*get_oldpwd(t_env *env_list)
 	return (NULL);
 }
 
-static void	update_pwd_env(char *prev_path, t_env *env_list)
+static int	update_oldpwd(char *prev_path, t_env *env_list)
+{
+	char	*key;
+	int		is_oldpwd_found;
+	t_env	*node;
+
+	is_oldpwd_found = 0;
+	node = env_list;
+	while (node)
+	{
+		key = get_env_key(node->str);
+		if (key && ft_strcmp(key, "OLDPWD") == 0 && ++is_oldpwd_found)
+			update_env(&(node->str), prev_path);
+		four_times_free(key, 0, 0, 0);
+		node = node->next;
+	}
+	if (!is_oldpwd_found)
+		env_pushback(&env_list, env_createnew(prev_path));
+	four_times_free(prev_path, 0, 0, 0);
+	return (1);
+}
+
+static int	update_pwd(t_env *env_list)
 {
 	char	*key;
 	char	*new_path;
+	char	*tmp;
+	int		is_pwd_found;
+	t_env	*node;
 
-	new_path = getcwd(NULL, 0);
-	while (env_list)
+	is_pwd_found = 0;
+	node = env_list;
+	tmp = getcwd(NULL, 0);
+	new_path = ft_strjoin("PWD=", tmp);
+	while (node)
 	{
-		key = get_env_key(env_list->str);
-		if (key && ft_strcmp(key, "PWD") == 0)
-		{
-			free(env_list->str);
-			env_list->str = ft_strjoin("PWD=", new_path);
-		}
-		else if (key && ft_strcmp(key, "OLDPWD") == 0)
-		{
-			free(env_list->str);
-			env_list->str = ft_strjoin("OLDPWD=", prev_path);
-		}
+		key = get_env_key(node->str);
+		if (key && ft_strcmp(key, "PWD") == 0 && ++is_pwd_found)
+			update_env(&(node->str), new_path);
 		four_times_free(key, 0, 0, 0);
-		env_list = env_list->next;
+		node = node->next;
 	}
-	four_times_free(new_path, 0, 0, 0);
+	if (!is_pwd_found)
+		env_pushback(&env_list, env_createnew(new_path));
+	four_times_free(new_path, tmp, 0, 0);
+	return (1);
 }
 
 int	cmd_cd(char **argv, t_env *env_list)
@@ -89,9 +112,9 @@ int	cmd_cd(char **argv, t_env *env_list)
 	if (new_path == NULL)
 		return (0);
 	prev_path = getcwd(NULL, 0);
-	if (chdir(new_path) == 0)
-		update_pwd_env(prev_path, env_list);
-	else
+	if (chdir(new_path) != 0
+		|| !update_pwd(env_list)
+		|| !update_oldpwd(ft_strjoin("OLDPWD=", prev_path), env_list))
 	{
 		four_times_free(prev_path, new_path, home_path, 0);
 		ft_putstr_fd("pmshell: ", 2);
