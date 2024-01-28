@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 05:46:11 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/29 06:33:50 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/29 06:37:27 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static int	exec_child_cmd(t_cmd *cmd, t_env *env_list)
 		exit(1);
 	else if (pid == 0)
 	{
-		//	execve(cmd->argv[0], &(cmd->argv[1]), env_str_list);
-		// exit(0);
+		execve(cmd->argv[0], cmd->argv, env_str_list);
+		exit(0);
 	}
 	cmd_wait_child(pid, 1);
 	free_env_str_list(env_str_list);
