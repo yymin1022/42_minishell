@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 01:32:00 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/30 13:45:06 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/30 13:45:31 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,6 @@ char	**get_env_str_list(t_env *env_list)
 	}
 	res[idx] = NULL;
 	return (res);
-}
-
-void	free_env_str_list(char **env_list)
-{
-	int	i;
-
-	i = 0;
-	while (env_list[i])
-	{
-		free(env_list[i]);
-		i++;
-	}
-	free(env_list);
 }
 
 char	**get_path_env(t_env *env_list)

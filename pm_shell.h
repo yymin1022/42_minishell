@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/30 13:45:09 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/30 13:45:33 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef struct s_info
 
 char	**get_env_str_list(t_env *env_list);
 char	**get_path_env(t_env *env_list);
-void	free_env_str_list(char **env_list);
 void	print_argument_err(char *str);
 void	update_env(char **str, char *new);
 
