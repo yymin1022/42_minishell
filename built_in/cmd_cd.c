@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 00:11:56 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/29 01:51:55 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/29 02:14:10 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,24 @@ static char	*get_home_path(t_env *env_list)
 	{
 		key = get_env_key(env_list->str);
 		if (key && ft_strcmp(key, "HOME") == 0)
+		{
+			free(key);
+			return (get_env_value(env_list->str));
+		}
+		four_times_free(key, 0, 0, 0);
+		env_list = env_list->next;
+	}
+	return (NULL);
+}
+
+static char	*get_oldpwd(t_env *env_list)
+{
+	char	*key;
+
+	while (env_list)
+	{
+		key = get_env_key(env_list->str);
+		if (key && ft_strcmp(key, "OLDPWD") == 0)
 		{
 			free(key);
 			return (get_env_value(env_list->str));
@@ -62,10 +80,10 @@ int	cmd_cd(char **argv, t_env *env_list)
 	char	*prev_path;
 
 	home_path = get_home_path(env_list);
-	if (argv[1] == NULL || ft_strcmp(argv[1], "~") == 0)
-		new_path = home_path;
-	else if (argv[1][0] == '~')
+	if (argv[1] == NULL || argv[1][0] == '~')
 		new_path = ft_strjoin(home_path, &argv[1][1]);
+	else if (ft_strcmp(argv[1], "-") == 0)
+		new_path = get_oldpwd(env_list);
 	else
 		new_path = ft_strdup(argv[1]);
 	if (new_path == NULL)
