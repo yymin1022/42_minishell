@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 01:32:00 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/30 13:44:59 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/30 13:45:06 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,20 @@ void	free_env_str_list(char **env_list)
 	free(env_list);
 }
 
-char	*get_path_env(t_env *env_list)
+char	**get_path_env(t_env *env_list)
 {
 	char	*key;
-	char	*res;
+	char	*tmp;
+	char	**res;
 
 	while (env_list)
 	{
 		key = get_env_key(env_list->str);
 		if (key && ft_strcmp(key, "PATH") == 0)
 		{
-			res = get_env_value(env_list->str);
+			tmp = get_env_value(env_list->str);
+			res = ft_split(tmp, ':');
+			free(tmp);
 			return (res);
 		}
 		env_list = env_list->next;
