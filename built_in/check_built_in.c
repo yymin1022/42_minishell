@@ -6,13 +6,13 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 15:57:07 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/29 01:16:57 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/30 13:40:50 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built_in.h"
 
-int	is_builtin(char **argv, t_env *env_list)
+int	exec_builtin(char **argv, t_env *env_list)
 {
 	if (!(argv[0]))
 		return (0);
@@ -30,5 +30,21 @@ int	is_builtin(char **argv, t_env *env_list)
 		return (cmd_pwd());
 	else if (!ft_strcmp(argv[0], "unset"))
 		return (cmd_unset(argv, env_list));
+	return (0);
+}
+
+int	is_builtin(char **argv)
+{
+	if (!(argv[0]))
+		return (0);
+	else if (!ft_strcmp(argv[0], "cd")
+		|| !ft_strcmp(argv[0], "echo")
+		|| !ft_strcmp(argv[0], "env")
+		|| !ft_strcmp(argv[0], "export")
+		|| !ft_strcmp(argv[0], "pwd")
+		|| !ft_strcmp(argv[0], "unset"))
+		return (1);
+	else if (!ft_strcmp(argv[0], "exit"))
+		exit (0);
 	return (0);
 }
