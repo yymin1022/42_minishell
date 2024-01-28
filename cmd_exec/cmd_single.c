@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 05:46:11 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/29 06:08:56 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/29 06:33:50 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,23 @@
 
 extern int	g_status_code;
 
-static int	exec_child_cmd(t_cmd *cmd)
+static int	exec_child_cmd(t_cmd *cmd, t_env *env_list)
 {
+	char	**env_str_list;
 	pid_t	pid;
 
+	env_str_list = get_env_str_list(env_list);
 	pid = fork();
 	(void)cmd;
 	if (pid < 0)
 		exit(1);
 	else if (pid == 0)
 	{
-		// Execute Command
+		//	execve(cmd->argv[0], &(cmd->argv[1]), env_str_list);
+		// exit(0);
 	}
-	// Wait Child Process
+	cmd_wait_child(pid, 1);
+	free_env_str_list(env_str_list);
 	return (1);
 
 }
@@ -41,6 +45,6 @@ void	exec_single_cmd(t_cmd *cmd, t_env *env_list)
 	if (is_builtin(cmd->argv))
 		exit_code = exec_builtin(cmd->argv, env_list);
 	else
-		exit_code = exec_child_cmd(cmd);
+		exit_code = exec_child_cmd(cmd, env_list);
 	g_status_code = exit_code;
 }
