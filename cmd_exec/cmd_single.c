@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 05:46:11 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/29 06:37:27 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/29 06:53:40 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,25 @@ extern int	g_status_code;
 static int	exec_child_cmd(t_cmd *cmd, t_env *env_list)
 {
 	char	**env_str_list;
+	char	**path_list;
+	char	*full_cmd;
 	pid_t	pid;
 
 	env_str_list = get_env_str_list(env_list);
+	path_list = get_path_env(env_list);
 	pid = fork();
 	(void)cmd;
 	if (pid < 0)
 		exit(1);
 	else if (pid == 0)
 	{
-		execve(cmd->argv[0], cmd->argv, env_str_list);
+		full_cmd = get_full_path_cmd(cmd->argv[0], path_list);
+		execve(full_cmd, cmd->argv, env_str_list);
 		exit(0);
 	}
 	cmd_wait_child(pid, 1);
-	free_env_str_list(env_str_list);
+	free_2d_str_array(env_str_list);
+	free_2d_str_array(path_list);
 	return (1);
 
 }
