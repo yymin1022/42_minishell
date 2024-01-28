@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 01:32:00 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/29 04:49:45 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/29 05:05:14 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ void	print_argument_err(char *str)
 void	update_env(char **str, char *new)
 {
 	free(*str);
-	*str = new;
+	*str = ft_strdup(new);
 }
