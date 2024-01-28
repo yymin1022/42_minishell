@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 01:32:00 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/29 05:05:14 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/30 13:44:03 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,21 @@ void	update_env(char **str, char *new)
 {
 	free(*str);
 	*str = ft_strdup(new);
+}
+
+char	**get_env_str_list(t_env *env_list)
+{
+	char	**res;
+	size_t	idx;
+
+	idx = 0;
+	res = (char **)malloc(sizeof(char *) * (env_getcnt(env_list) + 1));
+	while (env_list)
+	{
+		res[idx] = ft_strdup(env_list->str);
+		env_list = env_list->next;
+		idx++;
+	}
+	res[idx] = NULL;
+	return (res);
 }
