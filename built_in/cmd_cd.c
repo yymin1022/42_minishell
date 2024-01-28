@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   built_in.h                                         :+:      :+:    :+:   */
+/*   cmd_cd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 15:57:30 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/29 00:12:16 by yonyoo           ###   ########seoul.kr  */
+/*   Created: 2024/01/29 00:11:56 by yonyoo            #+#    #+#             */
+/*   Updated: 2024/01/29 00:12:35 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILT_IN_H
-# define BUILT_IN_H
-# include "../pm_shell.h"
+#include "built_in.h"
 
-typedef struct s_env	t_env;
-typedef struct s_token	t_token;
-
-int	cmd_cd(char **argv);
-int	cmd_echo(char **argv);
-int	cmd_env(t_env *env_list);
-int	cmd_export(char **str, t_env *env_list);
-int	cmd_pwd(void);
-int	cmd_unset(char **argv, t_env *env_list);
-int	is_builtin(char **argv, t_env *env_list);
-
-#endif
+int	cmd_cd(char **argv)
+{
+	printf("%s\n", argv[1]);
+	return (1);
+}

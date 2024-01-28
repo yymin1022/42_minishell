@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 15:57:07 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/26 05:06:33 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/29 00:12:52 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	is_builtin(char **argv, t_env *env_list)
 	if (!(argv[0]))
 		return (0);
 	else if (!ft_strcmp(argv[0], "cd"))
-		return (printf("cd\n"));
+		return (cmd_cd(argv));
 	else if (!ft_strcmp(argv[0], "echo"))
 		return (cmd_echo(argv));
 	else if (!ft_strcmp(argv[0], "env"))
