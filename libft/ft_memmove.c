@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 22:21:06 by sangylee          #+#    #+#             */
-/*   Updated: 2023/03/16 19:20:48 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/01/29 13:01:46 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 			tmp = len - i - 1;
 			*((unsigned char *)(dst + tmp)) = *((unsigned char *)(src + tmp));
 			i++;
-		}		
+		}
 	}
 	return (dst);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 22:45:26 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/21 17:04:14 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/29 13:19:53 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static char	**find_value_in_env_without_quote(
 	if (!strs)
 		return (0);
 	env_value = ft_substr(s, dollor_idx + 1, next_idx - dollor_idx - 1);
-	env_value = find_value_in_env(info, env_value);
+	env_value = find_value_in_env(info->env_list, env_value);
 	space_idx = 0;
 	while (env_value[space_idx] && env_value[space_idx] != ' ')
 		space_idx++;

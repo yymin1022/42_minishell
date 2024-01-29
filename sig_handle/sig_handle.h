@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sig_handle.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 20:21:17 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/21 17:14:14 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/29 13:31:08 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 # include "../pm_shell.h"
 
 void	init_sig_handler(void);
+void	heredoc_handler(int sig);
 
 #endif

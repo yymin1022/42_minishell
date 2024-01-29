@@ -1,6 +1,8 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
 CLIB = -lreadline
+READLINE_FLAGS = -I/opt/homebrew/opt/readline/include
+READLINE_COMPILE_FLAGS = -L/opt/homebrew/opt/readline/lib
 
 NAME = minishell
 SRCS = main.c util.c util2.c \
@@ -16,10 +18,10 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(MAKE) -C libft all
-	$(CC) $(CFLAGS) $(CLIB) $(OBJS) -o $(NAME) -L ./libft -lft
+	$(CC) $(CFLAGS) $(READLINE_COMPILE_FLAGS) $(CLIB) $(OBJS) -o $(NAME) -L ./libft -lft
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(READLINE_FLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJS)

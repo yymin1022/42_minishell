@@ -6,7 +6,7 @@
 /*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:08:01 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/23 22:47:02 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/01/29 13:20:25 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,16 @@
 
 extern int	g_status_code;
 
-char	*find_value_in_env(t_info *info, char *s)
+char	*find_value_in_env(t_env *env_list, char *s)
 {
-	t_env	*cur;
 	char	*equal_idx;
 	char	*key;
 	char	*value;
 
-	cur = info->env_list;
-	while (cur)
+	while (env_list)
 	{
-		equal_idx = ft_strchr(cur->str, '=');
-		key = ft_substr(cur->str, 0, equal_idx - cur->str);
+		equal_idx = ft_strchr(env_list->str, '=');
+		key = ft_substr(env_list->str, 0, equal_idx - env_list->str);
 		value = ft_strdup(equal_idx + 1);
 		if (!ft_strncmp(key, s, ft_strlen(s)) && ft_strlen(key) == ft_strlen(s))
 		{
@@ -34,7 +32,7 @@ char	*find_value_in_env(t_info *info, char *s)
 			return (value);
 		}
 		four_times_free(key, value, NULL, NULL);
-		cur = cur->next;
+		env_list = env_list->next;
 	}
 	free(s);
 	return (ft_strdup(""));
@@ -83,7 +81,7 @@ char	*handle_double_quote_with_env(t_info *info, char *s)
 		else
 		{
 			strs[1] = ft_substr(s, dollor_idx + 1, next_idx - dollor_idx - 1);
-			strs[1] = find_value_in_env(info, strs[1]);
+			strs[1] = find_value_in_env(info->env_list, strs[1]);
 		}
 		strs[2] = ft_substr(s, next_idx, ft_strlen(s) - next_idx);
 		tmp = ft_strjoin(strs[0], strs[1]);
