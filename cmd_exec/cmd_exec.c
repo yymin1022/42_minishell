@@ -6,11 +6,13 @@
 /*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:39:09 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/29 10:18:59 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/01/29 13:41:24 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd_exec.h"
+
+extern int	g_status_code;
 
 static void	exec_cmd(char **argv, t_env *env_list)
 {
@@ -31,4 +33,5 @@ void	exec_cmd_list(t_cmd *cmd_list, t_env *env_list)
 			exec_cmd(cmd_list->argv, env_list);
 		cmd_list = cmd_list->next;
 	}
+	unlink_heredoc_tmp(cmd_list);
 }
