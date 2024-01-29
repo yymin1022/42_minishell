@@ -6,7 +6,7 @@
 /*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 10:18:17 by isang-yun         #+#    #+#             */
-/*   Updated: 2024/01/29 10:29:05 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/01/29 13:20:45 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,23 @@
 
 extern int	g_status_code;
 
-static void	handle_env_in_heredoc(char *input, int fd, t_env *env)
+static char	*check_env_value(char *input, int *start, int *end, t_env *env_list)
+{
+	(*end) = (*start) + 1;
+	if (input[*end] == '?')
+	{
+		(*end) += 1;
+		return (ft_itoa(g_status_code));
+	}
+	if (input[*end] == '\0' || !ft_isalnum(input[*end]))
+		return (0);
+	while (input[*end] && (ft_isalnum(input[*end]) || input[*end] == '_'))
+		(*end)++;
+	return (find_value_in_env(env_list,
+			ft_substr(input, (*start) + 1, (*end) - (*start) - 1)));
+}
+
+static void	handle_env_in_heredoc(char *input, int fd, t_env *env_list)
 {
 	int		start;
 	int		end;
@@ -28,9 +44,18 @@ static void	handle_env_in_heredoc(char *input, int fd, t_env *env)
 		{
 			write(fd, input + start, end - start);
 			start = end;
-			// env_value = 
+			env_value = check_env_value(input, &start, &end, env_list);
+			if (env_value)
+			{
+				write(fd, env_value, ft_strlen(env_value));
+				free(env_value);
+				start = end;
+			}
 		}
+		else
+			end++;
 	}
+	write(fd, input + start, end - start);
 }
 
 static void	create_tmpfile(char *file_name, char *delimiter, t_env *env_list)
@@ -38,7 +63,7 @@ static void	create_tmpfile(char *file_name, char *delimiter, t_env *env_list)
 	int		fd;
 	char	*input;
 
-	fd = open(file_name, O_RDONLY | O_CREAT | O_TRUNC, 0644);
+	fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd < 0)
 		return ;
 	while (1)
@@ -50,6 +75,7 @@ static void	create_tmpfile(char *file_name, char *delimiter, t_env *env_list)
 				&& ft_strlen(input) == ft_strlen(delimiter)))
 		{
 			close(fd);
+			four_times_free(input, 0, 0, 0);
 			return ;
 		}
 		handle_env_in_heredoc(input, fd, env_list);
@@ -73,7 +99,7 @@ void	exec_heredoc(t_cmd *cmd_list, t_env *env_list)
 		cur_redirect = cmd_list->redirect;
 		while (cur_redirect)
 		{
-			if (ft_strncmp(cur_redirect->type, "<<", 2)
+			if (ft_strncmp(cur_redirect->type, "<<", 2) == 0
 				&& ft_strlen(cur_redirect->type) == 2)
 			{
 				file_str = ft_itoa(file_cnt);
@@ -86,4 +112,5 @@ void	exec_heredoc(t_cmd *cmd_list, t_env *env_list)
 		file_cnt++;
 		cmd_list = cmd_list->next;
 	}
+	// exit(0);
 }

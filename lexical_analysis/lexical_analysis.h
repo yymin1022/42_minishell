@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexical_analysis.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 15:59:55 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/26 01:23:12 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/29 13:20:57 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char		*get_env_value(char *str);
 void		handle_quote(t_info *info, t_token *token_list);
 char		*handle_double_quote_with_env(t_info *info, char *s);
 int			set_dollor_idx(char *s, int *dollor_idx, int *next_idx);
-char		*find_value_in_env(t_info *info, char *s);
+char		*find_value_in_env(t_env *env_list, char *s);
 
 void		handle_env(t_info *info, t_token *token_list);
 
