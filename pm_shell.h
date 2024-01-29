@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/26 01:32:34 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/29 04:50:03 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ typedef struct s_info
 }t_info;
 
 void	print_argument_err(char *str);
+void	update_env(char **str, char *new);
 
 #endif
