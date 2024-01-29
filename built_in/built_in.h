@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 15:57:30 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/26 01:41:57 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/29 01:17:11 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 typedef struct s_env	t_env;
 typedef struct s_token	t_token;
 
+int	cmd_cd(char **argv, t_env *env_list);
 int	cmd_echo(char **argv);
 int	cmd_env(t_env *env_list);
 int	cmd_export(char **str, t_env *env_list);

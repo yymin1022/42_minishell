@@ -6,7 +6,7 @@
 /*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/27 15:50:22 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/01/29 04:50:03 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ typedef struct s_info
 }t_info;
 
 void	print_argument_err(char *str);
+void	update_env(char **str, char *new);
 
 #endif
