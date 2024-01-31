@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 06:47:15 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/29 06:57:42 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/31 14:51:38 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*get_full_path_cmd(char *cmd, char **env_path)
 	int		i;
 
 	i = 0;
-	while (env_path[i])
+	while (env_path && env_path[i])
 	{
 		tmp = ft_strjoin(env_path[i], "/");
 		if (!tmp)
