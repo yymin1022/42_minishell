@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:38:37 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/30 13:45:21 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/02 00:53:23 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	cmd_wait_child(pid_t pid_parent, int cmd_cnt);
 void	exec_multiple_cmd(t_cmd *cmd, t_env *env_list, int cmd_cnt);
 void	exec_single_cmd(t_cmd *cmd, t_env *env_list);
 void	exec_cmd_list(t_cmd *cmd_list, t_env *env_list);
+void	exec_command(t_cmd *cmd, t_env *env_list);
 void	exec_heredoc(t_cmd *cmd_list, t_env *env_list);
 void	unlink_heredoc_tmp(t_cmd *cmd_list);
 #endif

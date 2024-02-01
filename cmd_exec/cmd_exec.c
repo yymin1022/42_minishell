@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:39:09 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/03 02:22:59 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/03 02:23:11 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	exec_cmd_list(t_cmd *cmd_list, t_env *env_list)
 	int	cmd_cnt;
 
 	cmd_cnt = get_cmd_cnt(cmd_list);
-	exec_heredoc(cmd_list, env_list);
+	// exec_heredoc(cmd_list, env_list);
 	if (get_cmd_cnt(cmd_list) > 1)
 		exec_multiple_cmd(cmd_list, env_list, cmd_cnt);
 	else
 		exec_single_cmd(cmd_list, env_list);
-	unlink_heredoc_tmp(cmd_list);
+	// unlink_heredoc_tmp(cmd_list);
 }
