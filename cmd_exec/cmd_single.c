@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 05:46:11 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/02 00:59:16 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/02 01:44:05 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static int	exec_child_cmd(t_cmd *cmd, t_env *env_list)
 	pid_t	pid;
 
 	signal(SIGINT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
 	pid = fork();
 	(void)cmd;
 	if (pid < 0)
@@ -26,6 +27,7 @@ static int	exec_child_cmd(t_cmd *cmd, t_env *env_list)
 	else if (pid == 0)
 	{
 		signal(SIGINT, SIG_DFL);
+		signal(SIGQUIT, SIG_DFL);
 		exec_command(cmd, env_list);
 	}
 	cmd_wait_child(pid, 1);
@@ -40,6 +42,7 @@ void	exec_single_cmd(t_cmd *cmd, t_env *env_list)
 	(void)env_list;
 	exit_code = 0;
 	signal(SIGINT, SIG_DFL);
+	signal(SIGQUIT, SIG_DFL);
 	if (is_builtin(cmd->argv))
 		exit_code = exec_builtin(cmd->argv, env_list);
 	else
