@@ -6,18 +6,11 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 00:41:03 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/02 01:40:44 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/02 03:28:24 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd_exec.h"
-
-static void	exit_not_found(char *cmd)
-{
-	ft_putstr_fd(cmd, 2);
-	ft_putendl_fd(": Command not found", 2);
-	exit(127);
-}
 
 void	exec_command(t_cmd *cmd, t_env *env_list)
 {
@@ -30,12 +23,15 @@ void	exec_command(t_cmd *cmd, t_env *env_list)
 	env_str_list = get_env_str_list(env_list);
 	path_list = get_path_env(env_list);
 	if (path_list == NULL || path_list[0] == NULL)
-		exit(127);
+	{
+		execve(cmd->argv[0], cmd->argv, env_str_list);
+		exit_no_path(cmd->argv[0]);
+	}
 	full_cmd = get_full_path_cmd(cmd->argv[0], path_list);
 	if (full_cmd == NULL)
 		exit_not_found(cmd->argv[0]);
 	execve(full_cmd, cmd->argv, env_str_list);
 	free_2d_str_array(env_str_list);
 	free_2d_str_array(path_list);
-	exit(0);
+	exit_err(cmd->argv[0], 1);
 }

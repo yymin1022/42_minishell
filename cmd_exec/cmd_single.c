@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 05:46:11 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/02 01:44:05 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/02 02:58:03 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	exec_child_cmd(t_cmd *cmd, t_env *env_list)
 	pid = fork();
 	(void)cmd;
 	if (pid < 0)
-		exit(1);
+		exit_err("fork", 1);
 	else if (pid == 0)
 	{
 		signal(SIGINT, SIG_DFL);
