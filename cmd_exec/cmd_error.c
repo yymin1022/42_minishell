@@ -6,11 +6,23 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 02:54:31 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/02 03:27:52 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/02 03:46:28 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd_exec.h"
+
+void	exit_dot_err(char *cmd)
+{
+	if (ft_strcmp(cmd, ".") == 0)
+	{
+		ft_putendl_fd("pmshell: .: filename argument required", 2);
+		ft_putendl_fd(".: usage: . filename [arguments]", 2);
+		exit(2);
+	}
+	if (ft_strcmp(cmd, "..") == 0)
+		exit_not_found(cmd);
+}
 
 void	exit_no_path(char *cmd)
 {

@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:38:37 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/02 03:29:55 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/02 03:46:36 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	exec_single_cmd(t_cmd *cmd, t_env *env_list);
 void	exec_cmd_list(t_cmd *cmd_list, t_env *env_list);
 void	exec_command(t_cmd *cmd, t_env *env_list);
 void	exec_heredoc(t_cmd *cmd_list, t_env *env_list);
+void	exit_dot_err(char *cmd);
 void	exit_err(char *cmd, int err);
 void	exit_no_path(char *cmd);
 void	exit_not_found(char *cmd);
