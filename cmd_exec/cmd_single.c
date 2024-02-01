@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 05:46:11 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/29 06:53:40 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/02 00:39:06 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	exec_single_cmd(t_cmd *cmd, t_env *env_list)
 	(void)cmd;
 	(void)env_list;
 	exit_code = 0;
+	signal(SIGINT, SIG_DFL);
 	if (is_builtin(cmd->argv))
 		exit_code = exec_builtin(cmd->argv, env_list);
 	else
