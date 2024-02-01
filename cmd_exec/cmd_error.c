@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 02:54:31 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/02 03:46:28 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/02 04:43:16 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	exit_dot_err(char *cmd)
 		exit(2);
 	}
 	if (ft_strcmp(cmd, "..") == 0)
-		exit_not_found(cmd);
+		exit_no_path(cmd);
 }
 
 void	exit_no_path(char *cmd)
