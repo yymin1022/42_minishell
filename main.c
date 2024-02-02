@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
+/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/29 13:33:58 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/02/02 12:13:17 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ int	main(int argc, char **argv, char **env)
 		if (!tmp)
 			exit(0);
 		input = ft_strtrim(tmp, " ");
+		if (ft_strlen(tmp) == 1 && tmp[0] != ' ')
+		{
+			free(input);
+			input = ft_strdup(tmp);
+		}
 		if (input[0] == '\0')
 		{
 			four_times_free(tmp, input, 0, 0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_exec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
+/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:39:09 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/29 13:41:24 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/02/02 12:11:07 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	exec_cmd(char **argv, t_env *env_list)
 
 void	exec_cmd_list(t_cmd *cmd_list, t_env *env_list)
 {
-	exec_heredoc(cmd_list, env_list);
+	//exec_heredoc(cmd_list, env_list);
 	while (cmd_list)
 	{
 		if (cmd_list->argv)
