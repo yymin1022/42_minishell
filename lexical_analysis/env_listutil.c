@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_listutil.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:11:54 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/29 05:17:12 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/02 12:49:05 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ t_env	*make_envlist(char **env)
 	i = -1;
 	env_list = NULL;
 	while (env[++i])
+	{
+		if (ft_strncmp(env[i], "OLDPWD", 6) == 0)
+			continue ;
 		env_pushback(&env_list, env_createnew(env[i]));
+	}
 	return (env_list);
 }
 
