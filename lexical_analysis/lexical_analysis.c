@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexical_analysis.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 14:44:59 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/21 17:03:01 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/02 12:35:36 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,7 @@ t_token	*lexical_analysis(t_info *info, char *s)
 	handle_chunk(&token_list);
 	handle_arg(&token_list);
 	handle_space(&token_list);
+	add_history(s);
+	free(s);
 	return (token_list);
 }

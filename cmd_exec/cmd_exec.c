@@ -26,7 +26,7 @@ static void	exec_cmd(char **argv, t_env *env_list)
 
 void	exec_cmd_list(t_cmd *cmd_list, t_env *env_list)
 {
-	exec_heredoc(cmd_list, env_list);
+	//exec_heredoc(cmd_list, env_list);
 	while (cmd_list)
 	{
 		if (cmd_list->argv)
