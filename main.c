@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
+/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/29 13:33:58 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/02/02 12:35:40 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,6 @@ void	check_leak(void)
 	system("leaks minishell");
 }
 
-void	init_info(t_info *info, char **env)
-{
-	info->env_list = make_envlist(env);
-	info->is_error = 0;
-}
-
 void	init_termios(void)
 {
 	struct termios	term;
@@ -34,34 +28,50 @@ void	init_termios(void)
 	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 }
 
+void	init_info(t_info *info, int argc, char **argv, char **env)
+{
+	(void)argc;
+	(void)argv;
+	info->env_list = make_envlist(env);
+	info->is_error = 0;
+	init_sig_handler();
+	init_termios();
+}
+
+int	check_input(char *input)
+{
+	char	*tmp;
+
+	tmp = ft_strtrim(input, " ");
+	if (ft_strlen(input) == 1 && input[0] != ' ')
+	{
+		free(tmp);
+		return (0);
+	}
+	if (tmp[0] == '\0')
+	{
+		four_times_free(tmp, input, 0, 0);
+		return (1);
+	}
+	free(tmp);
+	return (0);
+}
+
 int	main(int argc, char **argv, char **env)
 {
 	char	*input;
-	char	*tmp;
 	t_info	info;
 	t_token	*token_list;
 	t_cmd	*cmd_list;
 
 	atexit(check_leak);
-	(void)argc;
-	(void)argv;
-	init_info(&info, env);
-	init_sig_handler();
-	init_termios();
+	init_info(&info, argc, argv, env);
 	while (!info.is_error)
 	{
-		tmp = readline("pmshell> :$ ");
-		if (!tmp)
-			exit(0);
-		input = ft_strtrim(tmp, " ");
-		if (input[0] == '\0')
-		{
-			four_times_free(tmp, input, 0, 0);
+		input = readline("pmshell> :$ ");
+		if (check_input(input))
 			continue ;
-		}
 		token_list = lexical_analysis(&info, input);
-		add_history(input);
-		four_times_free(tmp, input, 0, 0);
 		if (!syntax_analysis(token_list))
 		{
 			ft_putstr_fd("pm_shell: invalid syntax\n", STDERR_FILENO);
