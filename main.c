@@ -6,7 +6,7 @@
 /*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/04 21:07:57 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/02/04 21:14:49 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	check_input(char *input)
 	char	*tmp;
 
 	if (!input)
-		exit(1);
+		exit(143);
 	tmp = ft_strtrim(input, " ");
 	if (ft_strlen(input) == 1 && input[0] != ' ')
 	{
