@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_exec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:39:09 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/02 12:49:11 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/05 00:25:03 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,23 @@ static void	exec_cmd(char **argv, t_env *env_list)
 
 void	exec_cmd_list(t_cmd *cmd_list, t_env *env_list)
 {
-	//exec_heredoc(cmd_list, env_list);
+	pid_t	pid;
+
+	pid = fork();
+	if (pid < 0)
+	{
+		ft_putstr_fd("fork error\n", STDERR_FILENO);
+		g_status_code = 1;
+		return ;
+	}
+	else if (pid == 0)
+		exec_heredoc(cmd_list, env_list);
+	signal(SIGINT, SIG_IGN);
+	wait(&g_status_code);
+	if (WIFEXITED(g_status_code))
+		g_status_code = WEXITSTATUS(g_status_code);
+	if (WIFSIGNALED(g_status_code))
+		g_status_code = 1;
 	while (cmd_list)
 	{
 		if (cmd_list->argv)
