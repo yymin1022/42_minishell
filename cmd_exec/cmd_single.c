@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 05:46:11 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 04:32:14 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/05 04:47:48 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ static int	exec_child_cmd(t_cmd *cmd, t_env *env_list)
 		signal(SIGINT, SIG_DFL);
 		signal(SIGQUIT, SIG_DFL);
 		redirect_io(cmd);
-		exec_command(cmd, env_list);
+		if (is_builtin(cmd->argv))
+			exec_builtin(cmd->argv, env_list);
+		else
+			exec_command(cmd, env_list);
 	}
 	cmd_wait_child(pid, 1);
 	return (1);
@@ -36,14 +39,8 @@ static int	exec_child_cmd(t_cmd *cmd, t_env *env_list)
 
 void	exec_single_cmd(t_cmd *cmd, t_env *env_list)
 {
-	int	exit_code;
-
-	exit_code = 0;
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_DFL);
-	if (is_builtin(cmd->argv))
-		exit_code = exec_builtin(cmd->argv, env_list);
-	else
-		exit_code = exec_child_cmd(cmd, env_list);
-	g_status_code = exit_code;
+	is_builtin(cmd->argv);
+	g_status_code = exec_child_cmd(cmd, env_list);
 }
