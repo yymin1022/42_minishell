@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/04 21:54:18 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/04 21:56:24 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	main(int argc, char **argv, char **env)
 	t_token	*token_list;
 	t_cmd	*cmd_list;
 
-	atexit(check_leak);
+	// atexit(check_leak);
 	init_info(&info, argc, argv, env);
 	while (!info.is_error)
 	{
