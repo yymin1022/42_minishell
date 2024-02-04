@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 19:58:11 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 04:30:59 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/05 05:53:14 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ int	redirect_io(t_cmd *cmd)
 	{
 		if (ft_strcmp(redir->type, ">>") == 0
 			|| ft_strcmp(redir->type, ">") == 0)
-			redirect_output(redir);
+			res = redirect_output(redir);
 		else
-			redirect_input(redir);
+			res = redirect_input(redir);
 		redir = cmd->next->redirect;
 	}
 	return (res);
