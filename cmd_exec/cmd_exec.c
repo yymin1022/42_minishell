@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:39:09 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/04 22:06:38 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/04 22:41:29 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	reset_fd_signal(int stdin_fd, int stdout_fd)
 {
-	if (dup2(stdin_fd, 0) == -1)
+	if (dup2(stdin_fd, STDIN_FILENO) == -1)
 		exit_msg("FD Error");
-	if (dup2(stdout_fd, 1) == -1)
+	if (dup2(stdout_fd, STDOUT_FILENO) == -1)
 		exit_msg("FD Error");
 	close(stdin_fd);
 	close(stdout_fd);
@@ -43,8 +43,8 @@ void	exec_cmd_list(t_cmd *cmd_list, t_env *env_list)
 	int	stdout_fd;
 
 	cmd_cnt = get_cmd_cnt(cmd_list);
-	stdin_fd = dup(0);
-	stdout_fd = dup(1);
+	stdin_fd = dup(STDIN_FILENO);
+	stdout_fd = dup(STDOUT_FILENO);
 	exec_heredoc(cmd_list, env_list);
 	if (get_cmd_cnt(cmd_list) > 1)
 		exec_multiple_cmd(cmd_list, env_list, cmd_cnt);
