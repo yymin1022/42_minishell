@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 10:18:17 by isang-yun         #+#    #+#             */
-/*   Updated: 2024/02/04 22:17:31 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/04 22:33:14 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	create_tmpfile(char *file_name, char *delimiter, t_env *env_list)
 	signal(SIGINT, heredoc_handler);
 	while (1)
 	{
-		input = readline("heredoc> ");
+		input = readline("> ");
 		if (!input)
 			ft_putstr_fd("\033[1A\033[2C", STDERR_FILENO);
 		if (!input || (ft_strncmp(input, delimiter, ft_strlen(input)) == 0
