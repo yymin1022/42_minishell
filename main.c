@@ -6,7 +6,7 @@
 /*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/04 21:35:33 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/02/05 00:11:18 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	main(int argc, char **argv, char **env)
 	t_token	*token_list;
 	t_cmd	*cmd_list;
 
-	atexit(check_leak);
+	//atexit(check_leak);
 	init_info(&info, argc, argv, env);
 	while (!info.is_error)
 	{
