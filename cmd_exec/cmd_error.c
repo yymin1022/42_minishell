@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 02:54:31 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/02 04:43:16 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/04 19:36:29 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,11 @@ void	exit_err(char *cmd, int err)
 	ft_putstr_fd("pmshell: ", 2);
 	perror(cmd);
 	exit(err);
+}
+
+void	exit_msg(char *str)
+{
+	ft_putstr_fd("pmshell: ", 2);
+	ft_putendl_fd(str, 2);
+	exit(1);
 }
