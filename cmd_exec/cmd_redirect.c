@@ -6,11 +6,40 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 19:58:11 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 03:56:45 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/05 04:30:59 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd_exec.h"
+
+static int	redirect_input(t_redirect *redir)
+{
+	int	fd;
+
+	fd = open(redir->file, O_RDONLY);
+	if (fd == -1)
+		exit_err(redir->file, 1);
+	if (dup2(fd, STDIN_FILENO) == -1)
+		perror("dup2(stdin)");
+	close(fd);
+	return (1);
+}
+
+static int	redirect_output(t_redirect *redir)
+{
+	int	fd;
+
+	if (ft_strcmp(redir->type, ">>") == 0)
+		fd = open(redir->file, O_WRONLY | O_CREAT | O_APPEND, 0644);
+	else
+		fd = open(redir->file, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (fd == -1)
+		exit_err(redir->file, 1);
+	if (dup2(fd, STDOUT_FILENO) == -1)
+		perror("dup2(stdout)");
+	close(fd);
+	return (1);
+}
 
 int	redirect_io(t_cmd *cmd)
 {
@@ -23,7 +52,11 @@ int	redirect_io(t_cmd *cmd)
 	res = 1;
 	while (redir && res)
 	{
-		ft_putendl_fd("AAAA", 2);
+		if (ft_strcmp(redir->type, ">>") == 0
+			|| ft_strcmp(redir->type, ">") == 0)
+			redirect_output(redir);
+		else
+			redirect_input(redir);
 		redir = cmd->next->redirect;
 	}
 	return (res);
