@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 05:46:35 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/04 22:43:24 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/05 04:54:57 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void	exec_child(t_cmd *cmd, t_env *env_list, int last_process)
 {
+	int	res;
+
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_DFL);
 	close(cmd->pipe[0]);
@@ -21,7 +23,13 @@ static void	exec_child(t_cmd *cmd, t_env *env_list, int last_process)
 		perror("dup2(pipe_write)");
 	close(cmd->pipe[1]);
 	redirect_io(cmd);
-	exec_command(cmd, env_list);
+	if (is_builtin(cmd->argv))
+	{
+		res = exec_builtin(cmd->argv, env_list);
+		exit(res);
+	}
+	else
+		exec_command(cmd, env_list);
 }
 
 static void	exec_parent(t_cmd *cmd)
