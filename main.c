@@ -6,7 +6,7 @@
 /*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/04 21:33:59 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/02/04 21:35:33 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	check_input(char *input)
 
 	if (!input)
 	{
-		ft_putstr_fd("exit\n", 2);
+		ft_putstr_fd("exit\n", STDERR_FILENO);
 		exit(1);
 	}
 	tmp = ft_strtrim(input, " ");
