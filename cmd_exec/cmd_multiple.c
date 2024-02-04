@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 05:46:35 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/04 21:05:33 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/04 22:43:24 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	exec_child(t_cmd *cmd, t_env *env_list, int last_process)
 	if (last_process != 0 && dup2(cmd->pipe[1], 1) == -1)
 		perror("dup2(pipe_write)");
 	close(cmd->pipe[1]);
+	redirect_io(cmd);
 	exec_command(cmd, env_list);
 }
 
@@ -36,9 +37,6 @@ void	exec_multiple_cmd(t_cmd *cmd, t_env *env_list, int cmd_cnt)
 	pid_t	pid;
 	int		idx;
 
-	(void)cmd;
-	(void)cmd_cnt;
-	(void)env_list;
 	signal(SIGINT, SIG_IGN);
 	signal(SIGQUIT, SIG_IGN);
 	idx = 1;
