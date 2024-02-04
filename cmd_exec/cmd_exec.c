@@ -6,7 +6,7 @@
 /*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:39:09 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 00:20:21 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/02/05 00:25:03 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ void	exec_cmd_list(t_cmd *cmd_list, t_env *env_list)
 		exec_heredoc(cmd_list, env_list);
 	signal(SIGINT, SIG_IGN);
 	wait(&g_status_code);
+	if (WIFEXITED(g_status_code))
+		g_status_code = WEXITSTATUS(g_status_code);
+	if (WIFSIGNALED(g_status_code))
+		g_status_code = 1;
 	while (cmd_list)
 	{
 		if (cmd_list->argv)
