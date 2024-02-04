@@ -6,7 +6,7 @@
 /*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:08:01 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/29 13:20:25 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/02/04 23:22:34 by isang-yun        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ char	*find_value_in_env(t_env *env_list, char *s)
 	while (env_list)
 	{
 		equal_idx = ft_strchr(env_list->str, '=');
+		if (!equal_idx)
+			break ;
 		key = ft_substr(env_list->str, 0, equal_idx - env_list->str);
 		value = ft_strdup(equal_idx + 1);
 		if (!ft_strncmp(key, s, ft_strlen(s)) && ft_strlen(key) == ft_strlen(s))
