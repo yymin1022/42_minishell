@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:38:37 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/04 19:36:37 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/04 22:37:17 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 typedef struct s_cmd	t_cmd;
 typedef struct s_env	t_env;
 
+int		redirect_io(t_cmd *cmd);
 char	*get_full_path_cmd(char *cmd, char **env_path);
 void	cmd_wait_child(pid_t pid_parent, int cmd_cnt);
 void	exec_multiple_cmd(t_cmd *cmd, t_env *env_list, int cmd_cnt);
