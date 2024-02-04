@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_heredoc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 10:18:17 by isang-yun         #+#    #+#             */
-/*   Updated: 2024/01/29 13:30:38 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/02/04 22:17:31 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,6 @@ void	exec_heredoc(t_cmd *cmd_list, t_env *env_list)
 		file_cnt++;
 		cmd_list = cmd_list->next;
 	}
-	exit(0);
 }
 
 void	unlink_heredoc_tmp(t_cmd *cmd_list)
