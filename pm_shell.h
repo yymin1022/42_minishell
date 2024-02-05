@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/02/05 19:11:19 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:33:19 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_info
 	int		status_code;
 	int		stdin_fd;
 	int		stdout_fd;
+	int		tmp_cnt;
 }t_info;
 
 char	**get_env_str_list(t_env *env_list);

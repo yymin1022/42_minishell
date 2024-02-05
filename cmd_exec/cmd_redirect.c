@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 19:58:11 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 18:47:38 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:36:04 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,19 @@
 
 static int	redirect_input(t_redirect *redir, t_info *info)
 {
-	int	fd;
+	int		fd;
+	char	*file_name;
+	char	*file_num;
 
-	fd = open(redir->file, O_RDONLY);
+	if (ft_strcmp(redir->type, "<<") == 0)
+	{
+		file_num = ft_itoa(info->tmp_cnt);
+		file_name = ft_strjoin(file_num, ".tmp");
+		fd = open(file_name, O_RDONLY);
+		four_times_free(file_name, file_num, 0, 0);
+	}
+	else
+		fd = open(redir->file, O_RDONLY);
 	if (fd == -1)
 		exit_err(redir->file, 1, info);
 	if (dup2(fd, STDIN_FILENO) == -1)

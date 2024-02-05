@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 19:13:15 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:33:35 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	init_info(t_info *info, int argc, char **argv, char **env)
 	info->status_code = 0;
 	info->stdin_fd = dup(STDIN_FILENO);
 	info->stdout_fd = dup(STDOUT_FILENO);
+	info->tmp_cnt = 0;
 	init_sig_handler();
 	init_termios();
 }
