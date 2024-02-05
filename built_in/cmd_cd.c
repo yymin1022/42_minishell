@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 00:11:56 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/06 03:02:09 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/06 03:45:20 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,25 @@ static char	*get_oldpwd(t_env *env_list)
 		four_times_free(key, 0, 0, 0);
 		env_list = env_list->next;
 	}
-	return (NULL);
+	return (ft_strdup(""));
+}
+
+static char	*get_pwd(t_env *env_list)
+{
+	char	*key;
+
+	while (env_list)
+	{
+		key = get_env_key(env_list->str);
+		if (key && ft_strcmp(key, "PWD") == 0)
+		{
+			free(key);
+			return (get_env_value(env_list->str));
+		}
+		four_times_free(key, 0, 0, 0);
+		env_list = env_list->next;
+	}
+	return (ft_strdup(""));
 }
 
 static int	update_oldpwd(char *prev_path, t_env *env_list)
@@ -116,7 +134,7 @@ int	cmd_cd(char **argv, t_env *env_list)
 		new_path = ft_strdup(argv[1]);
 	if (new_path == NULL)
 		return (1);
-	prev_path = getcwd(NULL, 0);
+	prev_path = get_pwd(env_list);
 	if (chdir(new_path) != 0
 		|| !update_pwd(env_list)
 		|| !update_oldpwd(ft_strjoin("OLDPWD=", prev_path), env_list))
