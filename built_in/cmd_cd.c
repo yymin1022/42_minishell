@@ -6,65 +6,11 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 00:11:56 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/06 03:45:20 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/06 03:50:17 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built_in.h"
-
-static char	*get_home_path(t_env *env_list)
-{
-	char	*key;
-
-	while (env_list)
-	{
-		key = get_env_key(env_list->str);
-		if (key && ft_strcmp(key, "HOME") == 0)
-		{
-			free(key);
-			return (get_env_value(env_list->str));
-		}
-		four_times_free(key, 0, 0, 0);
-		env_list = env_list->next;
-	}
-	return (NULL);
-}
-
-static char	*get_oldpwd(t_env *env_list)
-{
-	char	*key;
-
-	while (env_list)
-	{
-		key = get_env_key(env_list->str);
-		if (key && ft_strcmp(key, "OLDPWD") == 0)
-		{
-			free(key);
-			return (get_env_value(env_list->str));
-		}
-		four_times_free(key, 0, 0, 0);
-		env_list = env_list->next;
-	}
-	return (ft_strdup(""));
-}
-
-static char	*get_pwd(t_env *env_list)
-{
-	char	*key;
-
-	while (env_list)
-	{
-		key = get_env_key(env_list->str);
-		if (key && ft_strcmp(key, "PWD") == 0)
-		{
-			free(key);
-			return (get_env_value(env_list->str));
-		}
-		four_times_free(key, 0, 0, 0);
-		env_list = env_list->next;
-	}
-	return (ft_strdup(""));
-}
 
 static int	update_oldpwd(char *prev_path, t_env *env_list)
 {
@@ -114,24 +60,30 @@ static int	update_pwd(t_env *env_list)
 	return (1);
 }
 
+static void	check_arg(t_env *env_list, char **new_path,
+	char **home_path, char **argv)
+{
+	*home_path = get_home_path(env_list);
+	if (argv[1] == NULL || argv[1][0] == '~')
+	{
+		if (argv[1] == NULL)
+			*new_path = ft_strdup(*home_path);
+		else
+			*new_path = ft_strjoin(*home_path, &argv[1][1]);
+	}
+	else if (ft_strcmp(argv[1], "-") == 0)
+		*new_path = get_oldpwd(env_list);
+	else
+		*new_path = ft_strdup(argv[1]);
+}
+
 int	cmd_cd(char **argv, t_env *env_list)
 {
 	char	*home_path;
 	char	*new_path;
 	char	*prev_path;
 
-	home_path = get_home_path(env_list);
-	if (argv[1] == NULL || argv[1][0] == '~')
-	{
-		if (argv[1] == NULL)
-			new_path = ft_strdup(home_path);
-		else
-			new_path = ft_strjoin(home_path, &argv[1][1]);
-	}
-	else if (ft_strcmp(argv[1], "-") == 0)
-		new_path = get_oldpwd(env_list);
-	else
-		new_path = ft_strdup(argv[1]);
+	check_arg(env_list, &new_path, &home_path, argv);
 	if (new_path == NULL)
 		return (1);
 	prev_path = get_pwd(env_list);
