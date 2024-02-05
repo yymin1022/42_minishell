@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 03:06:32 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/06 03:23:16 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/06 03:24:49 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static int	is_numeric_only(char *str)
 	return (1);
 }
 
-static void	check_arg(char **argv, int *arg_cnt, int *arg_code, int *is_numeric_err)
+static void	check_arg(char **argv, int *arg_cnt,
+	int *arg_code, int *is_numeric_err)
 {
 	*arg_cnt = 1;
 	*is_numeric_err = 0;
@@ -59,7 +60,7 @@ int	cmd_exit(char **argv)
 		ft_putendl_fd(": numeric argument required", 2);
 		exit(255);
 	}
-	if (arg_cnt  == 2)
+	if (arg_cnt == 2)
 		exit(arg_code);
 	exit(0);
 	return (0);
