@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:02:34 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/06 03:03:46 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/06 03:36:59 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	cmd_unset(char **argv, t_env *env_list)
 	int		i;
 
 	i = 1;
-	while (argv[i])
+	while (env_list && argv[i])
 	{
 		if (is_valid_env_key(argv[i], 1))
 			del_env(argv[i], &env_list);
