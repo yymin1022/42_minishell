@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_redirect.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 19:58:11 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 05:53:14 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/05 14:20:15 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	redirect_io(t_cmd *cmd)
 			res = redirect_output(redir);
 		else
 			res = redirect_input(redir);
-		redir = cmd->next->redirect;
+		redir = redir->next;
 	}
 	return (res);
 }
