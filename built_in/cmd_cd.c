@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_cd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 00:11:56 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 20:46:07 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/06 03:02:09 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int	cmd_cd(char **argv, t_env *env_list)
 	else
 		new_path = ft_strdup(argv[1]);
 	if (new_path == NULL)
-		return (0);
+		return (1);
 	prev_path = getcwd(NULL, 0);
 	if (chdir(new_path) != 0
 		|| !update_pwd(env_list)
@@ -124,8 +124,8 @@ int	cmd_cd(char **argv, t_env *env_list)
 		four_times_free(prev_path, new_path, home_path, 0);
 		ft_putstr_fd("pmshell: ", 2);
 		perror("cd");
-		return (0);
+		return (1);
 	}
 	four_times_free(prev_path, new_path, home_path, 0);
-	return (1);
+	return (0);
 }
