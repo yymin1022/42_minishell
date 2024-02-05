@@ -6,13 +6,13 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 05:46:11 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 16:03:32 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:32:48 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd_exec.h"
 
-static void	exec_child_cmd(t_cmd *cmd, t_env *env_list)
+static void	exec_child_cmd(t_cmd *cmd, t_info *info)
 {
 	pid_t	pid;
 
@@ -20,27 +20,27 @@ static void	exec_child_cmd(t_cmd *cmd, t_env *env_list)
 	signal(SIGQUIT, SIG_IGN);
 	pid = fork();
 	if (pid < 0)
-		exit_err("fork", 1);
+		exit_err("fork", 1, info);
 	else if (pid == 0)
 	{
 		signal(SIGINT, SIG_DFL);
 		signal(SIGQUIT, SIG_DFL);
-		redirect_io(cmd);
-		exec_command(cmd, env_list);
+		redirect_io(cmd, info);
+		exec_command(cmd, info);
 	}
-	cmd_wait_child(pid, 1);
+	cmd_wait_child(pid, 1, info);
 }
 
-void	exec_single_cmd(t_cmd *cmd, t_env *env_list)
+void	exec_single_cmd(t_cmd *cmd, t_info *info)
 {
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_DFL);
 	is_builtin(cmd->argv);
 	if (is_builtin(cmd->argv))
 	{
-		redirect_io(cmd);
-		g_status_code = exec_builtin(cmd->argv, env_list);
+		redirect_io(cmd, info);
+		info->status_code = exec_builtin(cmd->argv, info->env_list);
 	}
 	else
-		exec_child_cmd(cmd, env_list);
+		exec_child_cmd(cmd, info);
 }

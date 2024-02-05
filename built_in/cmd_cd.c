@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 00:11:56 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 16:09:00 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/05 20:46:07 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,12 @@ int	cmd_cd(char **argv, t_env *env_list)
 
 	home_path = get_home_path(env_list);
 	if (argv[1] == NULL || argv[1][0] == '~')
-		new_path = ft_strjoin(home_path, &argv[1][1]);
+	{
+		if (argv[1] == NULL)
+			new_path = ft_strdup(home_path);
+		else
+			new_path = ft_strjoin(home_path, &argv[1][1]);
+	}
 	else if (ft_strcmp(argv[1], "-") == 0)
 		new_path = get_oldpwd(env_list);
 	else
