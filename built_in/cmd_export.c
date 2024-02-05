@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:02:34 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/29 06:24:59 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/06 03:03:12 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	cmd_export(char **str, t_env *env_list)
 		env_str_list = get_env_str_list(env_list);
 		sort_env_str_list(env_str_list, env_getcnt(env_list));
 		print_env_str_list(env_str_list);
-		return (1);
+		return (0);
 	}
 	i = 1;
 	while (str[i])
@@ -102,5 +102,5 @@ int	cmd_export(char **str, t_env *env_list)
 			env_pushback(&env_list, env_createnew(str[i]));
 		i++;
 	}
-	return (1);
+	return (0);
 }
