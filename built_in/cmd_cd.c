@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 00:11:56 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/06 03:50:17 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/06 04:02:12 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,11 @@ int	cmd_cd(char **argv, t_env *env_list)
 	char	*prev_path;
 
 	check_arg(env_list, &new_path, &home_path, argv);
+	if ((argv[1] == NULL || argv[1][0] == '~') && home_path == NULL)
+	{
+		ft_putendl_fd("pmshell: cd: HOME not set", 2);
+		return (1);
+	}
 	if (new_path == NULL)
 		return (1);
 	prev_path = get_pwd(env_list);
