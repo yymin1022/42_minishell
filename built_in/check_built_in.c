@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_built_in.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 15:57:07 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/30 13:40:50 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/05 15:48:00 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	exec_builtin(char **argv, t_env *env_list)
 
 int	is_builtin(char **argv)
 {
-	if (!(argv[0]))
+	if (!argv || !(argv[0]))
 		return (0);
 	else if (!ft_strcmp(argv[0], "cd")
 		|| !ft_strcmp(argv[0], "echo")

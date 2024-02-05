@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 10:18:17 by isang-yun         #+#    #+#             */
-/*   Updated: 2024/02/05 14:31:51 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:38:00 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ void	exec_heredoc(t_cmd *cmd_list, t_env *env_list)
 		file_cnt++;
 		cmd_list = cmd_list->next;
 	}
+	exit(0);
 }
 
 void	unlink_heredoc_tmp(t_cmd *cmd_list)

@@ -1,5 +1,6 @@
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
+CFLAGS += -g -fsanitize=address
 CLIB = -lreadline
 READLINE_FLAGS = -I/opt/homebrew/opt/readline/include
 READLINE_COMPILE_FLAGS = -L/opt/homebrew/opt/readline/lib
