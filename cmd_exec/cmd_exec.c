@@ -6,20 +6,20 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:39:09 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 18:42:31 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:17:06 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd_exec.h"
 
-static void	reset_fd_signal(int stdin_fd, int stdout_fd, t_info *info)
+static void	reset_fd_signal(t_info *info)
 {
-	if (dup2(stdin_fd, STDIN_FILENO) == -1)
+	if (dup2(info->stdin_fd, STDIN_FILENO) == -1)
 		exit_msg("FD Error", info);
-	if (dup2(stdout_fd, STDOUT_FILENO) == -1)
+	if (dup2(info->stdout_fd, STDOUT_FILENO) == -1)
 		exit_msg("FD Error", info);
-	close(stdin_fd);
-	close(stdout_fd);
+	close(info->stdin_fd);
+	close(info->stdout_fd);
 	init_sig_handler();
 }
 
@@ -39,21 +39,13 @@ static int	get_cmd_cnt(t_cmd *cmd_list)
 void	exec_cmd_list(t_cmd *cmd_list, t_info *info)
 {
 	int		cmd_cnt;
-	int		stdin_fd;
-	int		stdout_fd;
 	pid_t	pid;
 
+	info->stdin_fd = dup(STDIN_FILENO);
+	info->stdout_fd = dup(STDOUT_FILENO);
 	cmd_cnt = get_cmd_cnt(cmd_list);
-	stdin_fd = dup(STDIN_FILENO);
-	stdout_fd = dup(STDOUT_FILENO);
 	pid = fork();
-	if (pid < 0)
-	{
-		ft_putstr_fd("fork error\n", STDERR_FILENO);
-		info->status_code = 1;
-		return ;
-	}
-	else if (pid == 0)
+	if (pid == 0)
 		exec_heredoc(cmd_list, info);
 	signal(SIGINT, SIG_IGN);
 	wait(&info->status_code);
@@ -63,13 +55,12 @@ void	exec_cmd_list(t_cmd *cmd_list, t_info *info)
 	{
 		info->status_code = 1;
 		unlink_heredoc_tmp(cmd_list);
-		reset_fd_signal(stdin_fd, stdout_fd, info);
-		return ;
+		return (reset_fd_signal(info));
 	}
 	if (get_cmd_cnt(cmd_list) > 1)
 		exec_multiple_cmd(cmd_list, info, cmd_cnt);
 	else
 		exec_single_cmd(cmd_list, info);
 	unlink_heredoc_tmp(cmd_list);
-	reset_fd_signal(stdin_fd, stdout_fd, info);
+	reset_fd_signal(info);
 }

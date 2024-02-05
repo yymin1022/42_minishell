@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 19:08:20 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:13:15 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	init_info(t_info *info, int argc, char **argv, char **env)
 	info->env_list = make_envlist(env);
 	info->is_error = 0;
 	info->status_code = 0;
+	info->stdin_fd = dup(STDIN_FILENO);
+	info->stdout_fd = dup(STDOUT_FILENO);
 	init_sig_handler();
 	init_termios();
 }
@@ -71,7 +73,6 @@ int	main(int argc, char **argv, char **env)
 	t_token	*token_list;
 	t_cmd	*cmd_list;
 
-	//atexit(check_leak);
 	init_info(&info, argc, argv, env);
 	while (!info.is_error)
 	{
@@ -93,3 +94,5 @@ int	main(int argc, char **argv, char **env)
 	env_listclear(&(info.env_list));
 	return (0);
 }
+
+	//atexit(check_leak);
