@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/02/05 17:40:26 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:06:01 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # include "libft/libft.h"
 # include "sig_handle/sig_handle.h"
 # include "syntax_analysis/syntax_analysis.h"
+
+int	g_signo;
 
 typedef struct s_env{
 	char			*str;

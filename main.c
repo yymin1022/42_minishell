@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 18:32:09 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:08:20 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,13 @@ void	init_info(t_info *info, int argc, char **argv, char **env)
 	init_termios();
 }
 
-int	check_input(char *input)
+int	check_input(char *input, t_info *info)
 {
 	char	*tmp;
 
+	if (g_signo == SIGINT)
+		info->status_code = 1;
+	g_signo = 0;
 	if (!input)
 	{
 		ft_putstr_fd("exit\n", STDERR_FILENO);
@@ -73,7 +76,7 @@ int	main(int argc, char **argv, char **env)
 	while (!info.is_error)
 	{
 		input = readline("pmshell> :$ ");
-		if (check_input(input))
+		if (check_input(input, &info))
 			continue ;
 		token_list = lexical_analysis(&info, input);
 		if (!syntax_analysis(token_list))
