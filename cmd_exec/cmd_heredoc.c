@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_heredoc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
+/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 10:18:17 by isang-yun         #+#    #+#             */
-/*   Updated: 2024/02/05 00:20:11 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/02/05 16:38:00 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd_exec.h"
-
-extern int	g_status_code;
 
 static char	*check_env_value(char *input, int *start, int *end, t_env *env_list)
 {
@@ -69,7 +67,7 @@ static void	create_tmpfile(char *file_name, char *delimiter, t_env *env_list)
 	signal(SIGINT, heredoc_handler);
 	while (1)
 	{
-		input = readline("heredoc> ");
+		input = readline("> ");
 		if (!input)
 			ft_putstr_fd("\033[1A\033[2C", STDERR_FILENO);
 		if (!input || (ft_strncmp(input, delimiter, ft_strlen(input)) == 0

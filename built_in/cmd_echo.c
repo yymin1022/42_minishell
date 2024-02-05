@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_echo.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 01:40:57 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/26 05:21:13 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/05 15:27:04 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,5 @@ int	cmd_echo(char **argv)
 		if (!is_n)
 			printf("\n");
 	}
-	return (1);
+	return (0);
 }

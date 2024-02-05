@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 15:57:30 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/29 01:17:11 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/01/30 13:40:44 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	cmd_env(t_env *env_list);
 int	cmd_export(char **str, t_env *env_list);
 int	cmd_pwd(void);
 int	cmd_unset(char **argv, t_env *env_list);
-int	is_builtin(char **argv, t_env *env_list);
+int	exec_builtin(char **argv, t_env *env_list);
+int	is_builtin(char **argv);
 
 #endif
