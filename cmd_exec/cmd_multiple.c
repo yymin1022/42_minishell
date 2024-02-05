@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 05:46:35 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 18:51:45 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/05 18:54:45 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	exec_child(t_cmd *cmd, t_info *info, int last_process)
 	if (last_process != 0 && dup2(cmd->pipe[1], 1) == -1)
 		perror("dup2(pipe_write)");
 	close(cmd->pipe[1]);
-	redirect_io(cmd);
+	redirect_io(cmd, info);
 	if (is_builtin(cmd->argv))
 	{
 		res = exec_builtin(cmd->argv, info->env_list);
