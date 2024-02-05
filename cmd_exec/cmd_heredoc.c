@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_heredoc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 10:18:17 by isang-yun         #+#    #+#             */
-/*   Updated: 2024/02/05 03:04:25 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/05 14:31:51 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd_exec.h"
-
-extern int	g_status_code;
 
 static char	*check_env_value(char *input, int *start, int *end, t_env *env_list)
 {

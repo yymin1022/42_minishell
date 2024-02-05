@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pm_shell.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/01/30 13:45:33 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/05 14:31:06 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # include "libft/libft.h"
 # include "sig_handle/sig_handle.h"
 # include "syntax_analysis/syntax_analysis.h"
+
+int	g_status_code;
 
 typedef struct s_env{
 	char			*str;

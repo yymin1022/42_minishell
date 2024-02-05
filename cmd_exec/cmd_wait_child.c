@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_wait_child.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 06:16:26 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/02 00:53:44 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/05 14:31:58 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd_exec.h"
-
-extern int	g_status_code;
 
 void	cmd_wait_child(pid_t pid_parent, int cmd_cnt)
 {

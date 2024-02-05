@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_single.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 05:46:11 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 04:47:48 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/05 14:31:35 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd_exec.h"
-
-extern int	g_status_code;
 
 static int	exec_child_cmd(t_cmd *cmd, t_env *env_list)
 {

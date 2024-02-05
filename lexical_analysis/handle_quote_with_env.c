@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   handle_quote_with_env.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isang-yun <isang-yun@student.42.fr>        +#+  +:+       +#+        */
+/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:08:01 by sangylee          #+#    #+#             */
-/*   Updated: 2024/02/04 23:22:34 by isang-yun        ###   ########.fr       */
+/*   Updated: 2024/02/05 14:32:09 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexical_analysis.h"
-
-extern int	g_status_code;
 
 char	*find_value_in_env(t_env *env_list, char *s)
 {
