@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/02/05 14:31:06 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/05 17:22:43 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@
 # include "sig_handle/sig_handle.h"
 # include "syntax_analysis/syntax_analysis.h"
 
-int	g_status_code;
-
 typedef struct s_env{
 	char			*str;
 	struct s_env	*next;
@@ -39,6 +37,7 @@ typedef struct s_info
 {
 	t_env	*env_list;
 	int		is_error;
+	int		g_status_code;
 }t_info;
 
 char	**get_env_str_list(t_env *env_list);

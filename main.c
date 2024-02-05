@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 14:31:28 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/05 17:22:59 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	init_info(t_info *info, int argc, char **argv, char **env)
 	(void)argv;
 	info->env_list = make_envlist(env);
 	info->is_error = 0;
+	info->g_status_code = 0;
 	init_sig_handler();
 	init_termios();
 }

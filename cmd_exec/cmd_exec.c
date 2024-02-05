@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:39:09 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 16:41:44 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/05 17:21:39 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static int	get_cmd_cnt(t_cmd *cmd_list)
 
 void	exec_cmd_list(t_cmd *cmd_list, t_env *env_list)
 {
-	int	cmd_cnt;
-	int	stdin_fd;
-	int	stdout_fd;
+	int		cmd_cnt;
+	int		stdin_fd;
+	int		stdout_fd;
 	pid_t	pid;
 
 	cmd_cnt = get_cmd_cnt(cmd_list);
