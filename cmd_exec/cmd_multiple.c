@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 05:46:35 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 18:54:45 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:47:38 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	exec_multiple_cmd(t_cmd *cmd, t_info *info, int cmd_cnt)
 		else
 			exec_parent(cmd);
 		cmd = cmd->next;
+		info->tmp_cnt = idx;
 		idx++;
 	}
 	cmd_wait_child(pid, cmd_cnt, info);
