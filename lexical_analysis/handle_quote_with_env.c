@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:08:01 by sangylee          #+#    #+#             */
-/*   Updated: 2024/02/05 14:32:09 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/05 17:40:51 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char	*handle_double_quote_with_env(t_info *info, char *s)
 		if (s[dollor_idx + 1] == '?')
 		{
 			next_idx = dollor_idx + 2;
-			strs[1] = ft_itoa(g_status_code);
+			strs[1] = ft_itoa(info->status_code);
 		}
 		else
 		{

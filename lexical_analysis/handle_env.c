@@ -6,20 +6,20 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 22:45:26 by sangylee          #+#    #+#             */
-/*   Updated: 2024/02/05 14:32:03 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/05 17:41:22 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexical_analysis.h"
 
-static char	**handle_env_with_question_mark(void)
+static char	**handle_env_with_question_mark(t_info *info)
 {
 	char	**strs;
 
 	strs = (char **)malloc(sizeof(char *) * 4);
 	if (!strs)
 		return (0);
-	strs[0] = ft_itoa(g_status_code);
+	strs[0] = ft_itoa(info->status_code);
 	strs[1] = ft_strdup(" ");
 	strs[2] = ft_strdup("");
 	strs[3] = 0;
@@ -64,7 +64,7 @@ static char	**handle_env_without_quote(t_info *info, char *s)
 		return (0);
 	strs[0] = ft_substr(s, 0, dollor_idx);
 	if (s[dollor_idx + 1] == '?')
-		tmps = handle_env_with_question_mark();
+		tmps = handle_env_with_question_mark(info);
 	else
 		tmps = find_value_in_env_without_quote(info, s, dollor_idx, next_idx);
 	strs[1] = ft_strdup(tmps[0]);
