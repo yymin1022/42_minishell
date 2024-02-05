@@ -6,26 +6,26 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 19:58:11 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 14:20:15 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/05 18:47:38 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd_exec.h"
 
-static int	redirect_input(t_redirect *redir)
+static int	redirect_input(t_redirect *redir, t_info *info)
 {
 	int	fd;
 
 	fd = open(redir->file, O_RDONLY);
 	if (fd == -1)
-		exit_err(redir->file, 1);
+		exit_err(redir->file, 1, info);
 	if (dup2(fd, STDIN_FILENO) == -1)
 		perror("dup2(stdin)");
 	close(fd);
 	return (1);
 }
 
-static int	redirect_output(t_redirect *redir)
+static int	redirect_output(t_redirect *redir, t_info *info)
 {
 	int	fd;
 
@@ -34,14 +34,14 @@ static int	redirect_output(t_redirect *redir)
 	else
 		fd = open(redir->file, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd == -1)
-		exit_err(redir->file, 1);
+		exit_err(redir->file, 1, info);
 	if (dup2(fd, STDOUT_FILENO) == -1)
 		perror("dup2(stdout)");
 	close(fd);
 	return (1);
 }
 
-int	redirect_io(t_cmd *cmd)
+int	redirect_io(t_cmd *cmd, t_info *info)
 {
 	int			res;
 	t_redirect	*redir;
@@ -54,9 +54,9 @@ int	redirect_io(t_cmd *cmd)
 	{
 		if (ft_strcmp(redir->type, ">>") == 0
 			|| ft_strcmp(redir->type, ">") == 0)
-			res = redirect_output(redir);
+			res = redirect_output(redir, info);
 		else
-			res = redirect_input(redir);
+			res = redirect_input(redir, info);
 		redir = redir->next;
 	}
 	return (res);

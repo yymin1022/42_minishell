@@ -6,18 +6,18 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:39:09 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 17:44:57 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/05 18:42:31 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd_exec.h"
 
-static void	reset_fd_signal(int stdin_fd, int stdout_fd)
+static void	reset_fd_signal(int stdin_fd, int stdout_fd, t_info *info)
 {
 	if (dup2(stdin_fd, STDIN_FILENO) == -1)
-		exit_msg("FD Error");
+		exit_msg("FD Error", info);
 	if (dup2(stdout_fd, STDOUT_FILENO) == -1)
-		exit_msg("FD Error");
+		exit_msg("FD Error", info);
 	close(stdin_fd);
 	close(stdout_fd);
 	init_sig_handler();
@@ -54,7 +54,7 @@ void	exec_cmd_list(t_cmd *cmd_list, t_info *info)
 		return ;
 	}
 	else if (pid == 0)
-		exec_heredoc(cmd_list, info->env_list);
+		exec_heredoc(cmd_list, info);
 	signal(SIGINT, SIG_IGN);
 	wait(&info->status_code);
 	if (WIFEXITED(info->status_code))
@@ -63,13 +63,13 @@ void	exec_cmd_list(t_cmd *cmd_list, t_info *info)
 	{
 		info->status_code = 1;
 		unlink_heredoc_tmp(cmd_list);
-		reset_fd_signal(stdin_fd, stdout_fd);
+		reset_fd_signal(stdin_fd, stdout_fd, info);
 		return ;
 	}
 	if (get_cmd_cnt(cmd_list) > 1)
-		exec_multiple_cmd(cmd_list, info->env_list, cmd_cnt);
+		exec_multiple_cmd(cmd_list, info, cmd_cnt);
 	else
-		exec_single_cmd(cmd_list, info->env_list);
+		exec_single_cmd(cmd_list, info);
 	unlink_heredoc_tmp(cmd_list);
-	reset_fd_signal(stdin_fd, stdout_fd);
+	reset_fd_signal(stdin_fd, stdout_fd, info);
 }

@@ -6,26 +6,26 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 02:54:31 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 14:33:22 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/05 18:40:57 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd_exec.h"
 
-void	exit_dot_err(char *cmd)
+void	exit_dot_err(char *cmd, t_info *info)
 {
 	if (ft_strcmp(cmd, ".") == 0)
 	{
 		ft_putendl_fd("pmshell: .: filename argument required", 2);
 		ft_putendl_fd(".: usage: . filename [arguments]", 2);
-		g_status_code = 2;
+		info->status_code = 2;
 		exit(2);
 	}
 	if (ft_strcmp(cmd, "..") == 0)
-		exit_no_path(cmd);
+		exit_no_path(cmd, info);
 }
 
-void	exit_no_path(char *cmd)
+void	exit_no_path(char *cmd, t_info *info)
 {
 	int	is_dir;
 
@@ -40,33 +40,33 @@ void	exit_no_path(char *cmd)
 		perror(cmd);
 	if (is_dir)
 	{
-		g_status_code = 126;
+		info->status_code = 126;
 		exit(126);
 	}
-	g_status_code = 127;
+	info->status_code = 127;
 	exit(127);
 }
 
-void	exit_not_found(char *cmd)
+void	exit_not_found(char *cmd, t_info *info)
 {
 	ft_putstr_fd(cmd, 2);
 	ft_putendl_fd(": Command not found", 2);
-	g_status_code = 127;
+	info->status_code = 127;
 	exit(127);
 }
 
-void	exit_err(char *cmd, int err)
+void	exit_err(char *cmd, int err, t_info *info)
 {
 	ft_putstr_fd("pmshell: ", 2);
 	perror(cmd);
-	g_status_code = err;
+	info->status_code = err;
 	exit(err);
 }
 
-void	exit_msg(char *str)
+void	exit_msg(char *str, t_info *info)
 {
 	ft_putstr_fd("pmshell: ", 2);
 	ft_putendl_fd(str, 2);
-	g_status_code = 1;
+	info->status_code = 1;
 	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 17:42:46 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/05 18:32:09 by sangylee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	main(int argc, char **argv, char **env)
 			continue ;
 		}
 		cmd_list = make_cmdlist(token_list);
-		exec_cmd_list(cmd_list, info);
+		exec_cmd_list(cmd_list, &info);
 		token_listclear(&token_list);
 		cmd_listclear(&cmd_list);
 	}
