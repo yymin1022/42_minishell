@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:02:34 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/06 03:03:12 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/06 03:30:42 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	sort_env_str_list(char **env_list, size_t cnt)
 	size_t	i;
 
 	is_ordered = 0;
-	while (env_list && !is_ordered)
+	while (env_list && !is_ordered && cnt > 0)
 	{
 		i = 0;
 		is_ordered = 1;
