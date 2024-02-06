@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pm_shell.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:37:39 by sangylee          #+#    #+#             */
-/*   Updated: 2024/02/05 19:33:19 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/06 15:25:15 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,13 @@ typedef struct s_info
 
 char	**get_env_str_list(t_env *env_list);
 char	**get_path_env(t_env *env_list);
+int		check_input(char *input, t_info *info, struct termios *term);
+int		syntax_error_cleanup(t_info *info, t_token *token_list);
+void	init_info(t_info *info, int argc, char **argv, char **env);
+void	init_termios(void);
 void	print_argument_err(char *str);
 void	update_env(char **str, char *new);
+void	make_exec_cmd_list(t_cmd **cmd_list, t_info *info,
+			t_token *token_list);
 
 #endif
