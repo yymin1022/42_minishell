@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 16:02:04 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 20:28:53 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/06 15:20:20 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pm_shell.h"
-
-void	check_leak(void)
-{
-	system("leaks minishell");
-}
 
 void	init_termios(void)
 {
@@ -68,12 +63,21 @@ int	check_input(char *input, t_info *info, struct termios *term)
 	return (0);
 }
 
+static void	make_exec_cmd_list(t_cmd **cmd_list,
+	t_info *info, t_token *token_list)
+{
+	*cmd_list = make_cmdlist(token_list);
+	exec_cmd_list(*cmd_list, info);
+	token_listclear(&token_list);
+	cmd_listclear(cmd_list);
+}
+
 int	main(int argc, char **argv, char **env)
 {
-	char	*input;
-	t_info	info;
-	t_token	*token_list;
-	t_cmd	*cmd_list;
+	char			*input;
+	t_info			info;
+	t_token			*token_list;
+	t_cmd			*cmd_list;
 	struct termios	term;
 
 	tcgetattr(STDIN_FILENO, &term);
@@ -90,14 +94,9 @@ int	main(int argc, char **argv, char **env)
 			token_listclear(&token_list);
 			continue ;
 		}
-		cmd_list = make_cmdlist(token_list);
-		exec_cmd_list(cmd_list, &info);
-		token_listclear(&token_list);
-		cmd_listclear(&cmd_list);
+		make_exec_cmd_list(&cmd_list, &info, token_list);
 	}
 	env_listclear(&(info.env_list));
 	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 	return (0);
 }
-
-	//atexit(check_leak);
