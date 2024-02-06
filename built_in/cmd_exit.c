@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 03:06:32 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/06 03:24:49 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/06 14:57:58 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,14 @@ static void	check_arg(char **argv, int *arg_cnt,
 		*arg_code = ft_atoi(argv[1]);
 }
 
-int	cmd_exit(char **argv)
+int	cmd_exit(char **argv, t_cmd *cmd_list)
 {
 	int	arg_cnt;
 	int	arg_code;
 	int	is_numeric_err;
 
 	check_arg(argv, &arg_cnt, &arg_code, &is_numeric_err);
+	unlink_heredoc_tmp(cmd_list);
 	if (arg_cnt > 2)
 	{
 		ft_putendl_fd("pmshell: exit: too many arguments", 2);
