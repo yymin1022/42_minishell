@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 05:46:11 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/06 15:02:18 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/06 15:18:25 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	exec_single_cmd(t_cmd *cmd, t_info *info)
 {
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_DFL);
-	is_builtin(cmd->argv);
 	if (is_builtin(cmd->argv))
 	{
 		redirect_io(cmd, info);
