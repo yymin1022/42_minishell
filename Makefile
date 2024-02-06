@@ -6,7 +6,7 @@ READLINE_FLAGS = -I/opt/homebrew/opt/readline/include
 READLINE_COMPILE_FLAGS = -L/opt/homebrew/opt/readline/lib
 
 NAME = minishell
-SRCS = main.c util.c util2.c \
+SRCS = main.c util.c util2.c util3.c \
 		$(wildcard built_in/*.c) \
 		$(wildcard cmd_exec/*.c) \
 		$(wildcard cmd_list/*.c) \
