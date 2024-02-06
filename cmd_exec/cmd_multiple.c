@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_multiple.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 05:46:35 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 19:47:38 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/06 15:33:41 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	exec_child(t_cmd *cmd, t_info *info, int last_process)
 	redirect_io(cmd, info);
 	if (is_builtin(cmd->argv))
 	{
-		res = exec_builtin(cmd->argv, info->env_list);
+		res = exec_builtin(cmd->argv, cmd, info->env_list);
 		exit(res);
 	}
 	else
