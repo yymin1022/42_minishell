@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:02:34 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/01/26 01:11:14 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/06 03:02:52 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ int	cmd_env(t_env *env_list)
 		}
 		env_list = env_list->next;
 	}
-	return (1);
+	return (0);
 }

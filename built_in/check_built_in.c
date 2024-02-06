@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_built_in.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 15:57:07 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 15:48:00 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/06 14:55:51 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "built_in.h"
 
-int	exec_builtin(char **argv, t_env *env_list)
+int	exec_builtin(char **argv, t_cmd *cmd_list, t_env *env_list)
 {
 	if (!(argv[0]))
 		return (0);
@@ -23,7 +23,7 @@ int	exec_builtin(char **argv, t_env *env_list)
 	else if (!ft_strcmp(argv[0], "env"))
 		return (cmd_env(env_list));
 	else if (!ft_strcmp(argv[0], "exit"))
-		exit (0);
+		return (cmd_exit(argv, cmd_list));
 	else if (!ft_strcmp(argv[0], "export"))
 		return (cmd_export(argv, env_list));
 	else if (!ft_strcmp(argv[0], "pwd"))
@@ -42,9 +42,8 @@ int	is_builtin(char **argv)
 		|| !ft_strcmp(argv[0], "env")
 		|| !ft_strcmp(argv[0], "export")
 		|| !ft_strcmp(argv[0], "pwd")
-		|| !ft_strcmp(argv[0], "unset"))
+		|| !ft_strcmp(argv[0], "unset")
+		|| !ft_strcmp(argv[0], "exit"))
 		return (1);
-	else if (!ft_strcmp(argv[0], "exit"))
-		exit (0);
 	return (0);
 }
