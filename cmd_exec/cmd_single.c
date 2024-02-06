@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_single.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 05:46:11 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 19:32:48 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/06 15:02:18 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	exec_single_cmd(t_cmd *cmd, t_info *info)
 	if (is_builtin(cmd->argv))
 	{
 		redirect_io(cmd, info);
-		info->status_code = exec_builtin(cmd->argv, info->env_list);
+		info->status_code = exec_builtin(cmd->argv, cmd, info->env_list);
 	}
 	else
 		exec_child_cmd(cmd, info);
