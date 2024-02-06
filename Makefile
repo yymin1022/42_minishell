@@ -1,6 +1,5 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-# CFLAGS += -g -fsanitize=address
 CLIB = -lreadline
 READLINE_FLAGS = -I/opt/homebrew/opt/readline/include
 READLINE_COMPILE_FLAGS = -L/opt/homebrew/opt/readline/lib
@@ -18,7 +17,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(MAKE) -C libft all
+	$(MAKE) -C libft all
 	$(CC) $(CFLAGS) $(READLINE_COMPILE_FLAGS) $(CLIB) $(OBJS) -o $(NAME) -L ./libft -lft
 
 %.o: %.c
@@ -26,11 +25,11 @@ $(NAME): $(OBJS)
 
 clean:
 	rm -rf $(OBJS)
-	@$(MAKE) -C libft clean
+	$(MAKE) -C libft clean
 
 fclean: clean
 	rm -rf $(NAME)
-	@$(MAKE) -C libft fclean
+	$(MAKE) -C libft fclean
 
 re: fclean all
 
