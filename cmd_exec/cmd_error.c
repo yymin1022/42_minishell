@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_error.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sangylee <sangylee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 02:54:31 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/05 18:40:57 by sangylee         ###   ########.fr       */
+/*   Updated: 2024/02/06 15:39:29 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,11 @@ void	exit_no_path(char *cmd, t_info *info)
 		ft_putendl_fd(": is a directory", 2);
 	}
 	else
+	{
+		info->status_code = 126;
 		perror(cmd);
+		exit(126);
+	}
 	if (is_dir)
 	{
 		info->status_code = 126;
