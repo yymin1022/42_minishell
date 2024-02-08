@@ -6,7 +6,7 @@
 /*   By: yonyoo <yonyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:02:34 by yonyoo            #+#    #+#             */
-/*   Updated: 2024/02/06 03:30:42 by yonyoo           ###   ########seoul.kr  */
+/*   Updated: 2024/02/09 03:57:10 by yonyoo           ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	print_env_str_list(char **env_list)
 	size_t	i;
 
 	i = 0;
-	while (env_list[i])
+	while (env_list && env_list[i])
 	{
 		key = get_env_key(env_list[i]);
 		value = get_env_value(env_list[i]);
